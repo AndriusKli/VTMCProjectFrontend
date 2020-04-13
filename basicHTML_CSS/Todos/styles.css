@@ -1,0 +1,87 @@
+body{
+  background : #3F0091;
+  background : rgba(63, 0, 145, 1);
+}
+.box{
+  position: absolute;
+  max-width: 1200px;
+  height: auto;
+  background-color:#ffffff;
+  border-radius: 15px;
+  box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.2),
+  0 20px 20px 0 rgba(0, 0, 0, 0.19),
+  0 20px 20px 0 rgba(0, 0, 0, 0.2),
+  0 20px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+h5 {
+  background-color: #ffffff;
+  color: #000000;
+}
+.card-body{
+  background-color: #ffffff;
+  color: #000000;
+}
+.container{
+  max-width: 1100px;
+  height: auto;
+  background-color:#ffffff;
+  border-radius: 15px;
+  box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.2),
+  0 20px 20px 0 rgba(0, 0, 0, 0.19),
+  0 20px 20px 0 rgba(0, 0, 0, 0.2),
+  0 20px 20px 0 rgba(0, 0, 0, 0.19);
+}
+input[type=text],
+input[type=text]:focus{
+  color: #4E01D4;
+  border: none;
+  background: rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+}
+
+#left {
+
+}
+
+#right {
+
+}
+
+.todos li{
+  background: #3F0091;
+}
+.delete{
+  cursor: pointer;
+}
+.filtered{
+  display: none !important;
+}
+
+.homeBotton
+{
+background-image : url(imageHome.png);
+background-repeat : no-repeat;
+}
+
+.btn {
+  background-color: #3F0091; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 4px 10px; /* Some padding */
+  font-size: 20px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+
+form {
+  overflow: hidden;
+}
+input {
+  float: right;
+  clear: both;
+}
