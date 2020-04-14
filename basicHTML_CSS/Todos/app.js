@@ -1,4 +1,4 @@
-const addForm = document.querySelector('.add');
+//const addForm = document.querySelector('.add');
 const list = document.querySelector('.todos');
 const search = document.querySelector('.search input');
 
@@ -16,25 +16,25 @@ const generateTemplate = todo => {
 };
 
 // add todos
-addForm.addEventListener('submit', e => {
+// addForm.addEventListener('submit', e => {
 
-  e.preventDefault();
-  const todo = addForm.add.value.trim();
+//   e.preventDefault();
+//   const todo = addForm.add.value.trim();
 
-  if(todo.length) {
-    generateTemplate(todo);
-    addForm.reset();
-  }
+//   if(todo.length) {
+//     generateTemplate(todo);
+//     addForm.reset();
+//   }
 
-});
+// });
 
 // delete todos
-list.addEventListener('click', e => {
+// list.addEventListener('click', e => {
 
-  if(e.target.classList.contains('delete')){
-    e.target.parentElement.remove();
-  }
-});
+//   if(e.target.classList.contains('delete')){
+//     e.target.parentElement.remove();
+//   }
+// });
 
 const filterTodos = (term) => {
 

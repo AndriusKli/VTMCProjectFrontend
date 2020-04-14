@@ -2,16 +2,38 @@ body{
   background : #3F0091;
   background : rgba(63, 0, 145, 1);
 }
-.box{
-  position: absolute;
-  max-width: 1200px;
+.container1 {
+  width: 1100px;
   height: auto;
-  background-color:#ffffff;
+  /* margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px; */
+  margin: 30px auto;
+}
+.box {
+  display: inline-block;
+  width: 100%;
+  margin-top: auto;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #ffffff;
   border-radius: 15px;
   box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.2),
   0 20px 20px 0 rgba(0, 0, 0, 0.19),
   0 20px 20px 0 rgba(0, 0, 0, 0.2),
   0 20px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+img {
+  width: 750px;
+  margin-bottom: 20px;
+}
+
+h1{
+  color: #3F0091;
+  padding-bottom: 30px;
+  margin-top: 50px;
+  margin-left: 30px;
 }
 
 h5 {
@@ -54,23 +76,36 @@ input[type=text]:focus{
 .delete{
   cursor: pointer;
 }
+.edit{
+  cursor: pointer;
+}
 .filtered{
   display: none !important;
-}
-
-.homeBotton
-{
-background-image : url(imageHome.png);
-background-repeat : no-repeat;
 }
 
 .btn {
   background-color: #3F0091; /* Blue background */
   border: none; /* Remove borders */
-  color: white; /* White text */
+  color: #ffffff; /* White text */
   padding: 4px 10px; /* Some padding */
+  margin-right: 2px;
   font-size: 20px; /* Set a font size */
   cursor: pointer; /* Mouse pointer on hover */
+}
+
+.btn2{
+  background-color: #3F0091; /* Blue background */
+  border: none; /* Remove borders */
+  color:#ffffff; /* White text */
+  padding: 4px 10px; /* Some padding */
+  font-size: 15px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  position: absolute;
+  margin-top: 190px;
+  margin-left: 30px;
+}
+.btn2:hover {
+  background-color: RoyalBlue;
 }
 
 /* Darker background on mouse-over */
@@ -84,4 +119,22 @@ form {
 input {
   float: right;
   clear: both;
+}
+.card-body{
+  width: 950px;
+}
+.card-header{
+  width: 970px;
+}
+.new-project-link{
+  margin-left: 920px;
+}
+.chevron {
+  background-color: #3F0091; /* Blue background */
+  border: none; /* Remove borders */
+  color:#ffffff; /* White text */
+  padding: 4px 10px; /* Some padding */
+  margin-left: 432px;
+  font-size: 20px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
 }
