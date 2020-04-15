@@ -1,4 +1,4 @@
-body{
+body {
   background : #3F0091;
   background : rgba(63, 0, 145, 1);
 }
@@ -12,6 +12,7 @@ body{
   margin-top: 2%;
   margin-bottom: 2% ;
 }
+
 .box {
   display: inline-block;
   width: 100%;
@@ -25,7 +26,7 @@ body{
   0 20px 20px 0 rgba(0, 0, 0, 0.2),
   0 20px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.btn2{
+.btn2 {
   background-color: #3F0091;
   border: none;
   color:#ffffff; 
@@ -55,7 +56,7 @@ img {
   margin-right: 20px;
 }
 
-h1{
+h1 {
   position: absolute;
   float: inherit;
   font-size:3vw;
@@ -75,7 +76,7 @@ h3 {
 
 /* start.html */
 
-.container{
+#pageHeader {
   max-width: 90%;
   height: auto;
   background-color:#ffffff;
@@ -93,10 +94,6 @@ input[type=text]:focus{
   max-width: 400px;
 }
 
-.content{
-  
-}
-
 h5 {
   background-color: #ffffff;
   color: #000000;
@@ -104,15 +101,6 @@ h5 {
 .card-body{
   background-color: #ffffff;
   color: #000000;
-}
-
-
-#left {
-
-}
-
-#right {
-
 }
 
 .todos li{
@@ -142,6 +130,7 @@ h5 {
 .btn:hover {
   background-color: RoyalBlue;
 }
+
 .navbar{
   padding-left: 0px;
   padding-right: 0px;
@@ -150,6 +139,7 @@ h5 {
 form {
   overflow: hidden;
 }
+
 input {
   float: right;
   clear: both;
