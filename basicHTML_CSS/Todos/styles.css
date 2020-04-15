@@ -2,13 +2,15 @@ body{
   background : #3F0091;
   background : rgba(63, 0, 145, 1);
 }
+
+/* index.html */
+
 .container1 {
-  width: 1100px;
+  width: 90%;
   height: auto;
-  /* margin-left: auto;
-  margin-right: auto;
-  margin-top: 30px; */
-  margin: 30px auto;
+  margin: auto;
+  margin-top: 2%;
+  margin-bottom: 2% ;
 }
 .box {
   display: inline-block;
@@ -23,29 +25,58 @@ body{
   0 20px 20px 0 rgba(0, 0, 0, 0.2),
   0 20px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.btn2{
+  background-color: #3F0091;
+  border: none;
+  color:#ffffff; 
+  padding: 4px 10px;
+  font-size: 1.5vw;
+  cursor: pointer;
+  border-radius: 5px;
+  position: absolute;
+  float: inherit;
+  margin-top: 20%;
+  margin-left: 30px;
+}
+.btn2:hover {
+  background-color: RoyalBlue;
+  text-decoration: none;
+}
+
+.responsive {
+  float: right;
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
 
 img {
   width: 750px;
   margin-bottom: 20px;
+  margin-right: 20px;
 }
 
 h1{
-  color: #3F0091;
-  padding-bottom: 30px;
-  margin-top: 50px;
+  position: absolute;
+  float: inherit;
+  font-size:3vw;
+  margin-top: 40px;
   margin-left: 30px;
+  color: #3F0091;
 }
 
-h5 {
-  background-color: #ffffff;
-  color: #000000;
+h3 {
+  position: absolute;
+  float: inherit;
+  font-size:1.5vw;
+  margin-top: 100px;
+  margin-left: 30px;
+  color: #3F0091;
 }
-.card-body{
-  background-color: #ffffff;
-  color: #000000;
-}
+
+/* start.html */
+
 .container{
-  max-width: 1100px;
+  max-width: 90%;
   height: auto;
   background-color:#ffffff;
   border-radius: 15px;
@@ -61,6 +92,20 @@ input[type=text]:focus{
   background: rgba(0, 0, 0, 0.2);
   max-width: 400px;
 }
+
+.content{
+  
+}
+
+h5 {
+  background-color: #ffffff;
+  color: #000000;
+}
+.card-body{
+  background-color: #ffffff;
+  color: #000000;
+}
+
 
 #left {
 
@@ -83,7 +128,7 @@ input[type=text]:focus{
   display: none !important;
 }
 
-.btn {
+.btn{
   background-color: #3F0091; /* Blue background */
   border: none; /* Remove borders */
   color: #ffffff; /* White text */
@@ -93,24 +138,13 @@ input[type=text]:focus{
   cursor: pointer; /* Mouse pointer on hover */
 }
 
-.btn2{
-  background-color: #3F0091; /* Blue background */
-  border: none; /* Remove borders */
-  color:#ffffff; /* White text */
-  padding: 4px 10px; /* Some padding */
-  font-size: 15px; /* Set a font size */
-  cursor: pointer; /* Mouse pointer on hover */
-  position: absolute;
-  margin-top: 190px;
-  margin-left: 30px;
-}
-.btn2:hover {
-  background-color: RoyalBlue;
-}
-
 /* Darker background on mouse-over */
 .btn:hover {
   background-color: RoyalBlue;
+}
+.navbar{
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 form {
@@ -121,20 +155,20 @@ input {
   clear: both;
 }
 .card-body{
-  width: 950px;
+  width: 95%;
 }
 .card-header{
-  width: 970px;
+  width: auto;
 }
 .new-project-link{
-  margin-left: 920px;
+  float: right;
 }
 .chevron {
   background-color: #3F0091; /* Blue background */
   border: none; /* Remove borders */
   color:#ffffff; /* White text */
   padding: 4px 10px; /* Some padding */
-  margin-left: 432px;
+  flex: 1;
   font-size: 20px; /* Set a font size */
   cursor: pointer; /* Mouse pointer on hover */
 }
