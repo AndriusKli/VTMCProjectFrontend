@@ -26,14 +26,26 @@ export default class ProjectList extends Component {
         })
     }
 
+    handleDelete = (event, id) => {
+        event.preventDefault();
+        console.log(`Delete pressed for project id ${id}`);
+        Axios.delete(`http://localhost:8080/projects/${id}`);
+        const updatedState = this.state.projects.filter(project => project.projectId !== id);
+        this.setState({projects: updatedState});
+    }
+
+    handleUpdate = (event, id) => {
+        // TODO
+    }
+
     render() {
         return (
             <div>
                 <ul id="projectContainer">
 
                     {this.state.projects.map(project =>
-                        <Project key={project.projectId} projectName={project.projectName} status={project.projectStatus}
-                        doneTasks={project.completeTasks} totalTasks={project.totalTasks} projectDescription={project.projectDescription} />
+                        <Project key={project.projectId} projectName={project.projectName} status={project.projectStatus} doneTasks={project.completeTasks}
+                        totalTasks={project.totalTasks} projectDescription={project.projectDescription} handleDelete={event => this.handleDelete(event, project.projectId)}/>
                     )}
 
                     <br />

@@ -14,7 +14,6 @@ export default class Project extends Component {
         this.setState({
             expanded: !this.state.expanded
         })
-        console.log(this.state.expanded);
     }
 
 
@@ -25,12 +24,12 @@ export default class Project extends Component {
                     <div className="col-8" onClick={this.handleClick}> {this.props.projectName} </div>
                     <div className="col-1" onClick={this.handleClick}> {this.props.status} </div>
                     <div className="col-1" onClick={this.handleClick}> {this.props.doneTasks}/{this.props.totalTasks} </div>
-                    <div className="col-1"> <FontAwesomeIcon icon={faPencilAlt} /> </div>
-                    <div className="col-1"> <FontAwesomeIcon icon={faTrashAlt} /> </div>
+                    <div className="col-1" > <FontAwesomeIcon icon={faPencilAlt} /> </div>
+                    <div className="col-1" onClick={this.props.handleDelete}> <FontAwesomeIcon icon={faTrashAlt} /> </div>
                 </div>
+
                 {!this.state.expanded && <div> {this.props.projectDescription} </div>}
 
-        
             </li>
         )
     }
