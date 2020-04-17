@@ -1,5 +1,5 @@
 import React from 'react'
-import ProjectList from './ProjectList'
+import ProjectContainer from './ProjectContainer'
 
 export default class Main extends React.Component {
 
@@ -50,8 +50,8 @@ export default class Main extends React.Component {
                     </div>
                 </header>
 
-                <ProjectList />
-                
+                <ProjectContainer />
+
             </div>
         )
     }

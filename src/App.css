@@ -26,6 +26,7 @@ body {
     0 20px 20px 0 rgba(0, 0, 0, 0.2),
     0 20px 20px 0 rgba(0, 0, 0, 0.19);
   }
+  
   .btn2 {
     background-color: #3F0091;
     border: none;
@@ -162,4 +163,5 @@ body {
     font-size: 20px; /* Set a font size */
     cursor: pointer; /* Mouse pointer on hover */
   }
+  
   
