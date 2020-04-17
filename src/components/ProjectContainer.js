@@ -6,7 +6,7 @@ export default class ProjectList extends Component {
 
 
     state = {
-        projects: [],        
+        projects: []        
     }
 
     componentDidMount() {
@@ -29,7 +29,7 @@ export default class ProjectList extends Component {
     handleDelete = (event, id) => {
         event.preventDefault();
         console.log(`Delete pressed for project id ${id}`);
-        Axios.delete(`http://localhost:8080/projects/${id}`);
+        Axios.delete(`http://localhost:8080/projects/${id}`); // Should probably wrap in a try block just in case.
         const updatedState = this.state.projects.filter(project => project.projectId !== id);
         this.setState({projects: updatedState});
     }

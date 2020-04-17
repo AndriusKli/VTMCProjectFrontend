@@ -1,5 +1,6 @@
 import React from 'react'
 import ProjectContainer from './ProjectContainer'
+import {Link} from 'react-router-dom'
 
 export default class Main extends React.Component {
 
@@ -13,7 +14,7 @@ export default class Main extends React.Component {
                         <div className="collapse navbar-collapse" id="left">
                             <ul className="navbar-nav mr-auto">
                                 <li className="nav-item active">
-                                    <a href="index.html" className="btn"><i className="fa fa-home"></i></a>
+                                    <Link to="/"><div className="btn"><i className="fa fa-home"></i></div></Link>
                                 </li>
                                 <li className="nav-item active">
                                     <button className="btn"><i className="fa fa-bars"></i></button>

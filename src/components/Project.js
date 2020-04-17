@@ -19,8 +19,8 @@ export default class Project extends Component {
 
     render() {
         return (
-            <li className="projectElement list-unstyled">
-                <div className="row pt-1 pb-2 mt-1">
+            <li className="projectElement list-unstyled pt-1 pb-2 mt-1">
+                <div className="row">
                     <div className="col-8" onClick={this.handleClick}> {this.props.projectName} </div>
                     <div className="col-1" onClick={this.handleClick}> {this.props.status} </div>
                     <div className="col-1" onClick={this.handleClick}> {this.props.doneTasks}/{this.props.totalTasks} </div>
