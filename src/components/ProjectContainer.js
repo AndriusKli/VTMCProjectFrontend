@@ -6,23 +6,15 @@ export default class ProjectList extends Component {
 
 
     state = {
-        projects: []        
+        projects: [],
+        searchActive: false,
+        filtered: []        
     }
 
     componentDidMount() {
         Axios.get(`http://localhost:8080/projects/full`).then(res => {
             const data = res.data;
             this.setState({ projects: data });
-            
-            // this.state.projects.forEach(project => {
-            //     Axios.get(`http://localhost:8080/projects/${project.projectId}/tasks`).then(res => {
-            //         const tasks = res.data;
-            //         this.setState({
-            //             projectTasks: this.state.projectTasks.concat({"projectId": `${project.projectId}`, "totalTasks": `${tasks.length}`, "completeTasks": ``})
-            //         });
-            //         console.log(this.state.projectTasks);
-            //     })
-            // })
         })
     }
 
@@ -32,10 +24,6 @@ export default class ProjectList extends Component {
         Axios.delete(`http://localhost:8080/projects/${id}`); // Should probably wrap in a try block just in case.
         const updatedState = this.state.projects.filter(project => project.projectId !== id);
         this.setState({projects: updatedState});
-    }
-
-    handleUpdate = (event, id) => {
-        // TODO
     }
 
     render() {
@@ -48,7 +36,6 @@ export default class ProjectList extends Component {
                         totalTasks={project.totalTasks} projectDescription={project.projectDescription} handleDelete={event => this.handleDelete(event, project.projectId)}/>
                     )}
 
-                    <br />
                 </ul>
             </div>
         )

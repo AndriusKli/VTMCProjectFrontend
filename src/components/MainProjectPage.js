@@ -1,9 +1,13 @@
 import React from 'react'
 import ProjectContainer from './ProjectContainer'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default class Main extends React.Component {
-
+    
+    
+    handleSearch = event => {
+        console.log("To Do");
+    }
 
     render() {
         return (
@@ -21,7 +25,7 @@ export default class Main extends React.Component {
                                 </li>
                                 <li className="nav-item">
                                     <form className="search">
-                                        <input className="form-control m-auto" type="text" name="search" placeholder="Search by name..." />
+                                        <input className="form-control m-auto" type="text" name="search" id="projectSearch" onChange={this.handleSearch} placeholder="Search by name..." />
                                     </form>
                                 </li>
                             </ul>
@@ -53,6 +57,7 @@ export default class Main extends React.Component {
 
                 <ProjectContainer />
 
+                <br />
             </div>
         )
     }

@@ -9,20 +9,20 @@ function App() {
 
     <div>
       <Switch>
-      <Route path="/" exact={true}>
-        <Homepage />
-      </Route>
+        <Route path="/" exact={true}>
+          <Homepage />
+        </Route>
 
-      <Route path="/projects">
-        <MainProjectPage />
-      </Route>
+        <Route path="/projects">
+          <MainProjectPage />
+        </Route>
 
-      <Route>
-        <h2> Insert 404 page here! </h2>
-      </Route>
-        </Switch>
-      </div >
-    
+        <Route>
+          <h2> Insert 404 page here! </h2>
+        </Route>
+      </Switch>
+    </div >
+
   )
 }
 

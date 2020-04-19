@@ -7,7 +7,7 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 export default class Project extends Component {
 
     state = {
-        expanded: true
+        expanded: false
     }
 
     handleClick = () => {
@@ -28,7 +28,7 @@ export default class Project extends Component {
                     <div className="col-1" onClick={this.props.handleDelete}> <FontAwesomeIcon icon={faTrashAlt} /> </div>
                 </div>
 
-                {!this.state.expanded && <div> {this.props.projectDescription} </div>}
+                {this.state.expanded && <div> {this.props.projectDescription} </div>}
 
             </li>
         )
