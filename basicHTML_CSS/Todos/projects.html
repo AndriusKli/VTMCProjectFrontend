@@ -53,22 +53,25 @@
 
     <!-- Everything else goes here -->
 
-    <div class="container my-container">
-      <div class="row">
-        <div class="col">Project ID:</div>
-        <div class="col">Create date:</div>
-        <div class="col">Status:</div>
-        <div class="w-100"></div>
-        <div class="col">Term:</div>
-        <div class="col">Name:</div>
-        <div class="col">Project manager:</div>
+    <div class="my-projectcontainer">
+      <div class="container">
+        <div class="row">
+          <div class="col">Project ID:</div>
+          <div class="col">Create date:</div>
+          <div class="col">Status:</div>
+          <div class="w-100"></div>
+          <div class="col">Term:</div>
+          <div class="col">Name:</div>
+          <div class="col">Project manager:</div>
+        </div>
+      </div>
+      <div class="container my-description">
+        <div class="row">
+          <div class="col-12">Description:</div>
+        </div>
       </div>
     </div>
-    <div class="container my-description">
-      <div class="row">
-        <div class="col-12">Description:</div>
-      </div>
-    </div>
+
 
     <div class="my-taskbar">
       <div class="container">
@@ -82,49 +85,54 @@
       </div>
     </div>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">NAME</th>
-          <th scope="col">PRIORITY</th>
-          <th scope="col">STATUS</th>
-          <th scope="col">CREATED</th>
-          <th scope="col">TERM</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark Otto</td>
-          <td>High</td>
-          <td>In progress</td>
-          <td>2020-04-05</td>
-          <td>2020-05-05</td>
-          <td><i class='fas fa-pencil-alt edit'></i><i class="far fa-trash-alt delete" style="margin: 0.3em;"></i></td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob Thornton</td>
-          <td>High</td>
-          <td>In progress</td>
-          <td>2020-04-05</td>
-          <td>2020-05-05</td>
-          <td><i class='fas fa-pencil-alt edit'></i><i class="far fa-trash-alt delete" style="margin: 0.3em;"></i></td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry Bird</td>
-          <td>High</td>
-          <td>In progress</td>
-          <td>2020-04-05</td>
-          <td>2020-05-05</td>
-          <td><i class='fas fa-pencil-alt edit'></i><i class="far fa-trash-alt delete" style="margin: 0.3em;"></i></td>
-        </tr>
-      </tbody>
-    </table>
-
+    <div class="my-table">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+            <th scope="col">PRIORITY</th>
+            <th scope="col">STATUS</th>
+            <th scope="col">CREATED</th>
+            <th scope="col">TERM</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark Otto</td>
+            <td>High</td>
+            <td>In progress</td>
+            <td>2020-04-05</td>
+            <td>2020-05-05</td>
+            <td><i class='fas fa-pencil-alt edit'></i><i class="far fa-trash-alt delete" style="margin: 0.3em;"></i>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob Thornton</td>
+            <td>High</td>
+            <td>In progress</td>
+            <td>2020-04-05</td>
+            <td>2020-05-05</td>
+            <td><i class='fas fa-pencil-alt edit'></i><i class="far fa-trash-alt delete" style="margin: 0.3em;"></i>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry Bird</td>
+            <td>High</td>
+            <td>In progress</td>
+            <td>2020-04-05</td>
+            <td>2020-05-05</td>
+            <td><i class='fas fa-pencil-alt edit'></i><i class="far fa-trash-alt delete" style="margin: 0.3em;"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
   </div>
 
   <script src="app.js" charset="utf-8"></script>
