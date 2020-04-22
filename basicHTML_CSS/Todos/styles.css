@@ -162,3 +162,16 @@ input {
   font-size: 20px; /* Set a font size */
   cursor: pointer; /* Mouse pointer on hover */
 }
+.my-container .row .col {
+  margin: 5px;
+}
+.my-description .row .col-12{
+  margin: 5px;
+}
+.my-taskbar {
+  float: right;
+  text-decoration: none;
+}
+.table{
+
+}
