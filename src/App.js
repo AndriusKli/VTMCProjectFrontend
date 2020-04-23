@@ -1,29 +1,43 @@
 import React from 'react';
 import './App.css';
-import MainProjectPage from './components/MainProjectPage'
-import { Switch, Route } from "react-router-dom"
-import Homepage from './components/Homepage'
+import MainProjectPage from './components/MainProjectPage';
+import { Switch, Route } from "react-router-dom";
+import Homepage from './components/Homepage';
+import { addProjects } from './actions/projects';
+import Axios from 'axios'
 
-function App() {
-  return (
 
-    <div>
-      <Switch>
-        <Route path="/" exact={true}>
-          <Homepage />
-        </Route>
+export default class App extends React.Component {
 
-        <Route path="/projects">
-          <MainProjectPage />
-        </Route>
+  componentDidMount() {
+    Axios.get(`http://localhost:8080/projects/full`).then(res => {
+        const data = res.data;
+        this.props.dispatch(addProjects(data));
+    })
 
-        <Route>
-          <h2> Insert 404 page here! </h2>
-        </Route>
-      </Switch>
-    </div >
+}
+  
+  render() {
+    return (
 
-  )
+      <div>
+        <Switch>
+          <Route path="/" exact={true}>
+            <Homepage />
+          </Route>
+
+          <Route path="/projects">
+            <MainProjectPage />
+          </Route>
+
+          <Route>
+            <h2> Insert 404 page here! </h2>
+          </Route>
+        </Switch>
+      </div >
+
+    )
+  }
 }
 
-export default App;
+
