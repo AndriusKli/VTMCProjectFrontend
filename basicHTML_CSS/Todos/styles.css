@@ -162,16 +162,26 @@ input {
   font-size: 20px; /* Set a font size */
   cursor: pointer; /* Mouse pointer on hover */
 }
-.my-container .row .col {
-  margin: 5px;
+.my-projectcontainer .container{
+  margin-left: 0;
 }
-.my-description .row .col-12{
-  margin: 5px;
+.my-projectcontainer .container .col{
+  margin-top: 0.5%;
+  margin-bottom: 0.5%;
+}
+.my-description {
+  margin-left: 0;
+  margin-top: 0.5%;
+  margin-bottom: 0.5%;
 }
 .my-taskbar {
   float: right;
   text-decoration: none;
 }
-.table{
-
+.my-taskbar .container{
+  margin-bottom: 2%;
+}
+.my-table {
+padding-left: 1%;
+padding-right: 1%;
 }
