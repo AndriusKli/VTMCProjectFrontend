@@ -5,10 +5,10 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import storeConfig from './store/storeConfig';
 import { Provider } from 'react-redux';
-import stateStore from './stateStore/reducerAndStore'
-import { addProjects } from './actions/projects';
-import { filterBySearch } from './actions/filters';
-import { filterStatusBy } from './actions/filters'
+// import stateStore from './stateStore/reducerAndStore'
+// import { addProjects } from './actions/projects';
+// import { filterBySearch } from './actions/filters';
+// import { filterStatusBy } from './actions/filters'
 
 const store = storeConfig();
 

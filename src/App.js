@@ -5,6 +5,8 @@ import { Switch, Route } from "react-router-dom";
 import Homepage from './components/Homepage';
 import { addProjects } from './actions/projects';
 import Axios from 'axios'
+import PageTemplate from './components/PageTemplate'
+import NewProject from './components/NewProject'
 
 
 export default class App extends React.Component {
@@ -26,8 +28,12 @@ export default class App extends React.Component {
             <Homepage />
           </Route>
 
-          <Route path="/projects">
+          <Route path="/projects" exact={true}>
             <MainProjectPage />
+          </Route>
+
+          <Route path="/projects/new">
+            <PageTemplate content={<NewProject/>} />
           </Route>
 
           <Route>

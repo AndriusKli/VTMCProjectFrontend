@@ -28,9 +28,11 @@ export default class Project extends Component {
         return (
             <li className="projectElement list-unstyled pt-1 pb-2 mt-1">
                 <div className="row">
-                    <div className="col-8" onClick={this.handleClick}> {this.props.projectName} </div>
+                    <div className="col-7" onClick={this.handleClick}> {this.props.projectName} </div>
+                    <a className="col-1" href="/#">View project</a>
                     <div className="col-1" onClick={this.handleClick}> {this.props.status} </div>
                     <div className="col-1" onClick={this.handleClick}> {this.props.doneTasks}/{this.props.totalTasks} </div>
+
                     <div className="col-1" > <FontAwesomeIcon icon={faPencilAlt} /> </div>
                     <div className="col-1" onClick={this.handleRemove}> <FontAwesomeIcon icon={faTrashAlt} /> </div>
                 </div>
