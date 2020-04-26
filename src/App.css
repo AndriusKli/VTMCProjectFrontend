@@ -168,3 +168,29 @@ body {
     width: 70%;
     height: auto;
   }
+
+  /* 2020-04-25 */
+
+  .my-projectcontainer .container{
+    margin-left: 0;
+  }
+  .my-projectcontainer .container .col{
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+  }
+  .my-description {
+    margin-left: 0;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+  }
+  .my-taskbar {
+    float: right;
+    text-decoration: none;
+  }
+  .my-taskbar .container{
+    margin-bottom: 2%;
+  }
+  .my-table {
+  padding-left: 1%;
+  padding-right: 1%;
+  }

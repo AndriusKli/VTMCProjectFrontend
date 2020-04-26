@@ -12,7 +12,18 @@ export default (state = projectsDefaultState, action) => {
         // Using a shorthand with object destructuring here. Alternative syntax for this would be the following:
         // return state.filter(project => project.projectId !== action.id);
         case 'REMOVE_PROJECT_BY_ID':
-            return state.filter(({projectId}) => projectId !== action.id);         
+            return state.filter(({ projectId }) => projectId !== action.id);
+        case 'ADD_TASKS':
+            return state.map(project => {
+                if (project.projectId === action.projectId) {
+                    return {
+                        ...project,
+                        "tasks": action.tasks
+                    }
+                } else {
+                    return project;
+                }
+            })
         default:
             return state;
     }

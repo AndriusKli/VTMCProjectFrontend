@@ -45,8 +45,6 @@ export default class NewTask extends Component {
                 "projectStatus": "Not started"
             }
 
-            console.log("submitting");
-            console.log(payload);
             Axios.post(`http://localhost:8080/projects/`, payload);
             // NEED TO REFRESH PROJECT STATE AFTER AN UPDATE. Probably should do that after submitting on the next page.
         } else {
@@ -86,7 +84,7 @@ export default class NewTask extends Component {
                     <label className="col-2 col-form-label">Deadline</label>
                     <div className="col-10">
                         <input type="date" className="form-control" id="deadline" name="dateInput" onChange={(event) => this.handleUpdate(event)} />
-                        {/* TODO: Figure out date selection and */}
+                        
                     </div>
                 </div>
 
@@ -96,6 +94,7 @@ export default class NewTask extends Component {
                         <button type="submit" className="btn btn-primary" onClick={(event) => this.handleSubmit(event)}>Save</button>
                         <Link to="/projects"> <div className="btn btn-info" role="button">Close</div> </Link>
                         {/* TODO: add confirmation dialog when closing. */}
+                        {/* TODO: send user to the project overview page when the correct data is submitted.*/}
                     </div>
 
                 </div>

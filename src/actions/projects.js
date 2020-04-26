@@ -12,4 +12,12 @@ export const removeProjectById = (id) => ({
     id
 });
 
+
+//
+
+export const addTasks = (projectId, tasks = []) => ({
+    "type": "ADD_TASKS",
+    projectId,
+    tasks
+})
 //

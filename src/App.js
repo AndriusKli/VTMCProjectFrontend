@@ -7,6 +7,7 @@ import { addProjects } from './actions/projects';
 import Axios from 'axios'
 import PageTemplate from './components/PageTemplate'
 import NewProject from './components/NewProject'
+import ProjectInfoPage from './components/ProjectInfoPage';
 
 
 export default class App extends React.Component {
@@ -32,13 +33,16 @@ export default class App extends React.Component {
             <MainProjectPage />
           </Route>
 
-          <Route path="/projects/new">
+          <Route path="/projects/new" exact={true}>
             <PageTemplate content={<NewProject/>} />
           </Route>
 
+          <Route path="/projects/:id" exact={true} component={ProjectInfoPage}/>
+           
           <Route>
             <h2> Insert 404 page here! </h2>
           </Route>
+
         </Switch>
       </div >
 

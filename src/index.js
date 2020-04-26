@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 // import { addProjects } from './actions/projects';
 // import { filterBySearch } from './actions/filters';
 // import { filterStatusBy } from './actions/filters'
+// import { addTasks } from './actions/projects';
 
 const store = storeConfig();
 
