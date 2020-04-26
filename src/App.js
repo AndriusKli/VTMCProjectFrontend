@@ -12,38 +12,46 @@ import ProjectInfoPage from './components/ProjectInfoPage';
 
 export default class App extends React.Component {
 
+  state = {
+    doneRetrieving: false
+  }
+
   componentDidMount() {
     Axios.get(`http://localhost:8080/projects/full`).then(res => {
-        const data = res.data;
-        this.props.dispatch(addProjects(data));
+      const data = res.data;
+      this.props.dispatch(addProjects(data));
+      this.setState({ doneRetrieving: true })
     })
 
-}
-  
+  }
+
+
   render() {
     return (
 
       <div>
-        <Switch>
-          <Route path="/" exact={true}>
-            <Homepage />
-          </Route>
+        {this.state.doneRetrieving ?
+          <Switch>
+            <Route path="/" exact={true}>
+              <Homepage />
+            </Route>
 
-          <Route path="/projects" exact={true}>
-            <MainProjectPage />
-          </Route>
+            <Route path="/projects" exact={true}>
+              <MainProjectPage />
+            </Route>
 
-          <Route path="/projects/new" exact={true}>
-            <PageTemplate content={<NewProject/>} />
-          </Route>
+            <Route path="/projects/new" exact={true}>
+              <PageTemplate content={<NewProject />} />
+            </Route>
 
-          <Route path="/projects/:id" exact={true} component={ProjectInfoPage}/>
-           
-          <Route>
-            <h2> Insert 404 page here! </h2>
-          </Route>
+            <Route path="/projects/:id" exact={true} component={ProjectInfoPage} />
 
-        </Switch>
+            <Route>
+              <h2> Insert 404 page here! </h2>
+            </Route>
+
+          </Switch>
+          : null}
       </div >
 
     )
