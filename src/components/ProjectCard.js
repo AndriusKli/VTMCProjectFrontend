@@ -6,7 +6,7 @@ import { removeProjectById } from '../actions/projects'
 import Axios from 'axios'
 import { Link } from "react-router-dom";
 
-export default class Project extends Component {
+export default class ProjectCard extends Component {
 
     state = {
         expanded: false

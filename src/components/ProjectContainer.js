@@ -1,5 +1,5 @@
 import React from 'react'
-import Project from './Project'
+import ProjectCard from './ProjectCard'
 import { connect } from 'react-redux'
 import selectProjects from '../selectors/projects';
 
@@ -7,7 +7,7 @@ const ProjectContainer = (props) => (
     <div>
         <ul id="projectContainer">
             {props.projects.map(project =>
-                <Project key={project.projectId} projectId={project.projectId} projectName={project.projectName} status={project.projectStatus} doneTasks={project.completeTasks}
+                <ProjectCard key={project.projectId} projectId={project.projectId} projectName={project.projectName} status={project.projectStatus} doneTasks={project.completeTasks}
                     totalTasks={project.totalTasks} projectDescription={project.projectDescription} dispatch={props.dispatch}/>
             )}
         </ul>

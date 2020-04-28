@@ -3,7 +3,8 @@ import TaskCard from './TaskCard';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
-import { addTasks } from '../actions/projects'
+import { addTasks } from '../actions/projects';
+
 
 // Read more about ownProps
 // Returns data on the currently accessed project.
@@ -27,7 +28,6 @@ class ProjectInfoPage extends Component {
             this.props.dispatch(addTasks(parseInt(this.props.match.params.id), data));
             this.setState({ doneRetrieving: true })
         });
-
 
     }
 
@@ -76,11 +76,14 @@ class ProjectInfoPage extends Component {
                         <div className="row">
                             <div className="col"> <b> Project ID: </b> {this.props.project.projectId} </div>
                             <div className="col"> <b> Name: </b> {this.props.project.projectName} </div>
-                            <div className="col"> <b> Status: </b> {this.props.project.projectStatus}s</div>
+                            <div className="col"> <b> Status: </b> {this.props.project.projectStatus}s</div>                                            
                             <div className="w-100"></div>
                             <div className="col"> <b> Deadline: </b> {new Date(this.props.project.projectDeadline).toLocaleString('lt-LT')} </div>
-                            <div className="col"> <b> Create date: </b> {new Date(this.props.project.projectCreatedOn).toLocaleString('lt-LT')} </div>
                             <div className="col"> <b> Project manager: </b> {this.props.project.projectManager}</div>
+                            <div className="col"> <b> Modified on: </b> {new Date(this.props.project.projectModifiedOn).toLocaleString('lt-LT')} </div>                        
+                            <div className="w-100"></div>
+                            <div className="col"> <b> Create date: </b> {new Date(this.props.project.projectCreatedOn).toLocaleString('lt-LT')} </div>
+                            
                         </div>
                     </div>
                     <div className="container my-description">
@@ -98,7 +101,7 @@ class ProjectInfoPage extends Component {
                             <div><a className="col" href="/#">NOT STARTED</a></div>
                             <div><a className="col" href="/#">IN PROGRESS</a></div>
                             <div><a className="col" href="/#">CLOSED</a></div>
-                            <div><a className="col" href="taskform.html">NEW TASK+</a></div>
+                            <Link to={`/projects/${this.props.project.projectId}/tasks/create`}> <div><span className="col">NEW TASK+</span></div> </Link>
                         </div>
                     </div>
                 </div>
@@ -121,14 +124,15 @@ class ProjectInfoPage extends Component {
                         <tbody>
 
                             {this.state.doneRetrieving ?
-                                this.props.project.tasks.map(task => <TaskCard key={task.taskId}
+                                this.props.project.tasks.map(task => <TaskCard 
+                                    key={task.taskId}
                                     id={task.taskId}
                                     name={task.taskName}
                                     priority={task.taskPriority}
                                     created={new Date(task.taskCreatedOn).toLocaleDateString('lt-LT')}
                                     modified={new Date(task.taskModifiedOn).toLocaleDateString('lt-LT')}
                                     deadline={new Date(task.taskDeadline).toLocaleDateString('lt-LT')}
-                                    status={task.tastStatus}
+                                    status={task.taskStatus}
                                 />) : null}
 
                         </tbody>

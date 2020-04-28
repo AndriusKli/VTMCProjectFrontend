@@ -6,8 +6,9 @@ import Homepage from './components/Homepage';
 import { addProjects } from './actions/projects';
 import Axios from 'axios'
 import PageTemplate from './components/PageTemplate'
-import NewProject from './components/NewProject'
+import NewProject from './components/CreateProjectForm'
 import ProjectInfoPage from './components/ProjectInfoPage';
+import CreateTaskForm from './components/CreateTaskForm';
 
 
 export default class App extends React.Component {
@@ -28,7 +29,6 @@ export default class App extends React.Component {
 
   render() {
     return (
-
       <div>
         {this.state.doneRetrieving ?
           <Switch>
@@ -40,11 +40,16 @@ export default class App extends React.Component {
               <MainProjectPage />
             </Route>
 
-            <Route path="/projects/new" exact={true}>
+            {/* <Route path="/projects/new" exact={true}>
               <PageTemplate content={<NewProject />} />
-            </Route>
+            </Route> */}
+
+            <Route path="/projects/new" exact={true} render={(props => <PageTemplate {...props} content={<NewProject/>}/>)} />
+
 
             <Route path="/projects/:id" exact={true} component={ProjectInfoPage} />
+
+            <Route path="/projects/:id/tasks/create" exact={true} render={(props => <PageTemplate {...props} content={<CreateTaskForm/>}/>)} />
 
             <Route>
               <h2> Insert 404 page here! </h2>
@@ -53,7 +58,6 @@ export default class App extends React.Component {
           </Switch>
           : null}
       </div >
-
     )
   }
 }
