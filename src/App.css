@@ -37,8 +37,8 @@ body {
     border-radius: 5px;
     position: absolute;
     float: inherit;
-    margin-top: 20%;
-    margin-left: 30px;
+    margin-top: 22vw;
+    margin-left: 3vw;
   }
   .btn2:hover {
     background-color: RoyalBlue;
@@ -61,8 +61,8 @@ body {
     position: absolute;
     float: inherit;
     font-size:3vw;
-    margin-top: 40px;
-    margin-left: 30px;
+    margin-top: 3vw;
+    margin-left: 3vw;
     color: #3F0091;
   }
   
@@ -70,8 +70,8 @@ body {
     position: absolute;
     float: inherit;
     font-size:1.5vw;
-    margin-top: 100px;
-    margin-left: 30px;
+    margin-top: 7vw;
+    margin-left: 3vw;
     color: #3F0091;
   }
   
