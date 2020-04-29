@@ -1,4 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 export default class TaskCard extends Component {
     render() {
@@ -12,7 +15,7 @@ export default class TaskCard extends Component {
                 <td className="col-1">{this.props.modified}</td>
                 <td className="col-1">{this.props.deadline}</td>
                 <td className="col-1">View task</td>
-                <td className="col-1">Del</td>
+                <td className="col-1"> <FontAwesomeIcon icon={faTrashAlt} /></td>
             </tr>
         )
     }

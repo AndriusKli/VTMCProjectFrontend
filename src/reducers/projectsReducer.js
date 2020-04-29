@@ -13,6 +13,17 @@ export default (state = projectsDefaultState, action) => {
         // return state.filter(project => project.projectId !== action.id);
         case 'REMOVE_PROJECT_BY_ID':
             return state.filter(({ projectId }) => projectId !== action.id);
+        case 'UPDATE_PROJECT':
+            return state.map(project => {
+                if (project.projectId === action.projectId) {
+                    return {
+                        ...project,
+                        ...action.update
+                    }
+                } else {
+                    return project;
+                }
+            })
         case 'ADD_TASKS':
             return state.map(project => {
                 if (project.projectId === action.projectId) {

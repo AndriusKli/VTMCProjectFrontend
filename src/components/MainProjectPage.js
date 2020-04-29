@@ -63,6 +63,7 @@ const MainProjectPage = (props) => (
                 <Link to="/projects/new"><div className="new-project-link" href="/#">NEW PROJECT+</div></Link>
             </div>
         </header>
+        <br/>
 
         <ProjectContainer />
 

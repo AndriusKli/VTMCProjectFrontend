@@ -40,12 +40,9 @@ export default class App extends React.Component {
               <MainProjectPage />
             </Route>
 
-            {/* <Route path="/projects/new" exact={true}>
+            <Route path="/projects/new" exact={true}>
               <PageTemplate content={<NewProject />} />
-            </Route> */}
-
-            <Route path="/projects/new" exact={true} render={(props => <PageTemplate {...props} content={<NewProject/>}/>)} />
-
+            </Route> 
 
             <Route path="/projects/:id" exact={true} component={ProjectInfoPage} />
 
