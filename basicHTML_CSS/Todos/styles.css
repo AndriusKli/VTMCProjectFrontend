@@ -98,8 +98,7 @@ ul.a {
   padding-right: 1.3vw;
   padding-left: 1.3vw;
 }
-.row {
-  padding-right: 1vw;
+li.row {
   border-style: solid;
   border-color: #3F0091;
   border-radius: 0.7vw;
