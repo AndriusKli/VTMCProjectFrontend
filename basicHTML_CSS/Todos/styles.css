@@ -36,8 +36,8 @@ body {
   border-radius: 5px;
   position: absolute;
   float: inherit;
-  margin-top: 20%;
-  margin-left: 30px;
+  margin-top: 22vw;
+  margin-left: 3vw;
 }
 .btn2:hover {
   background-color: RoyalBlue;
@@ -60,8 +60,8 @@ h1 {
   position: absolute;
   float: inherit;
   font-size:3vw;
-  margin-top: 40px;
-  margin-left: 30px;
+  margin-top: 3vw;
+  margin-left: 3vw;
   color: #3F0091;
 }
 
@@ -69,8 +69,8 @@ h3 {
   position: absolute;
   float: inherit;
   font-size:1.5vw;
-  margin-top: 100px;
-  margin-left: 30px;
+  margin-top: 7vw;
+  margin-left: 3vw;
   color: #3F0091;
 }
 
@@ -92,6 +92,17 @@ input[type=text]:focus{
   border: none;
   background: rgba(0, 0, 0, 0.2);
   max-width: 400px;
+}
+
+ul.a {
+  padding-right: 1.3vw;
+  padding-left: 1.3vw;
+}
+.row {
+  padding-right: 1vw;
+  border-style: solid;
+  border-color: #3F0091;
+  border-radius: 0.7vw;
 }
 
 h5 {
