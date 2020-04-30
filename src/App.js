@@ -6,10 +6,10 @@ import Homepage from './components/Homepage';
 import { addProjects } from './actions/projects';
 import Axios from 'axios'
 import PageTemplate from './components/PageTemplate'
-import NewProject from './components/CreateProjectForm'
+import CreateProjectForm from './components/CreateProjectForm'
 import ProjectInfoPage from './components/ProjectInfoPage';
 import CreateTaskForm from './components/CreateTaskForm';
-
+import EditProjectForm from './components/EditProjectForm';
 
 export default class App extends React.Component {
 
@@ -41,10 +41,12 @@ export default class App extends React.Component {
             </Route>
 
             <Route path="/projects/new" exact={true}>
-              <PageTemplate content={<NewProject />} />
+              <PageTemplate content={<CreateProjectForm />} />
             </Route> 
 
             <Route path="/projects/:id" exact={true} component={ProjectInfoPage} />
+
+            <Route path="/projects/:id/edit" exact={true} render={(props => <PageTemplate {...props} content={<EditProjectForm/>}/>)} />
 
             <Route path="/projects/:id/tasks/create" exact={true} render={(props => <PageTemplate {...props} content={<CreateTaskForm/>}/>)} />
 

@@ -114,7 +114,6 @@ function CreateProjectForm() {
                 <div className="col-12">
                     <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Save</button>
                     <Link to="/projects"> <div className="btn btn-info" role="button">Close</div> </Link>
-                    {/* TODO: add confirmation dialog when closing. */}
                 </div>
 
             </div>

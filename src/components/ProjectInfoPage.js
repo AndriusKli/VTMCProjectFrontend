@@ -3,7 +3,7 @@ import TaskCard from './TaskCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import Axios from 'axios';
-import { addTasks } from '../actions/projects';
+import { removeProjectById } from '../actions/projects';
 
 
 function ProjectInfoPage() {
@@ -15,9 +15,13 @@ function ProjectInfoPage() {
 
     const project = useSelector(state => state.projects.find(({ projectId }) => projectId === parseInt(params.id)));
 
-    const handleDelete = (event) => {
+    const handleProjectDelete = (event) => {
         event.preventDefault();
-        // TODO
+        if (window.confirm("Are you sure you want to delete this project?")) {
+            Axios.delete(`http://localhost:8080/projects/${params.id}`);
+            dispatch(removeProjectById(parseInt(params.id)));
+            history.push(`/projects`);
+        }
     }
 
     const handleSubmit = (event) => {
@@ -50,13 +54,13 @@ function ProjectInfoPage() {
                     <div className="collapse navbar-collapse" id="right">
                         <ul className="nav navbar-nav ml-auto">
                             <li className="nav-item">
-                                <a className="nav-link" href="/#">EDIT PROJECT</a>
+                                <Link to={`/projects/${params.id}/edit`}><span className="nav-link" href="/#">EDIT PROJECT</span></Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/#">DELETE PROJECT</a>
+                                <span className="nav-link" onClick={handleProjectDelete}>DELETE PROJECT</span>
                             </li>
                             <li className="nav-item">
-                                <Link to="/projects"> <div className="nav-link">CLOSE</div> </Link>
+                                <Link to="/projects"> <span className="nav-link">CLOSE</span> </Link>
                             </li>
                         </ul>
                     </div>
@@ -126,6 +130,8 @@ function ProjectInfoPage() {
                             modified={new Date(task.taskModifiedOn).toLocaleDateString('lt-LT')}
                             deadline={new Date(task.taskDeadline).toLocaleDateString('lt-LT')}
                             status={task.taskStatus}
+                            dispatch={dispatch}
+                            projectId={params.id}
                         />)}
 
                     </tbody>

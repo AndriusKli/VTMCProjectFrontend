@@ -23,6 +23,14 @@ export default (state = projectsDefaultState, action) => {
                 } else {
                     return project;
                 }
+            });
+        case 'REMOVE_TASK_BY_ID':
+            return state.map(project => {
+                if (project.projectId === parseInt(action.projectId)) {                    
+                    return {...project, "tasks": project.tasks.filter(({ taskId }) => taskId !== action.taskId)}
+                } else {
+                    return project;
+                }
             })
         case 'ADD_TASKS':
             return state.map(project => {
@@ -34,7 +42,7 @@ export default (state = projectsDefaultState, action) => {
                 } else {
                     return project;
                 }
-            })
+            });
         default:
             return state;
     }

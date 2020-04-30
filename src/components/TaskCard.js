@@ -2,8 +2,19 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import Axios from 'axios';
+import { removeTaskById } from '../actions/projects';
 
 export default class TaskCard extends Component {
+
+
+    handleDelete = (event) => {
+        event.preventDefault();
+        Axios.delete(`http://localhost:8080/projects/${this.props.projectId}/tasks/${this.props.id}`);
+        this.props.dispatch(removeTaskById(this.props.projectId, this.props.id));
+        
+    }
+
     render() {
         return (
             <tr className="taskItem">
@@ -15,7 +26,7 @@ export default class TaskCard extends Component {
                 <td className="col-1">{this.props.modified}</td>
                 <td className="col-1">{this.props.deadline}</td>
                 <td className="col-1">View task</td>
-                <td className="col-1"> <FontAwesomeIcon icon={faTrashAlt} /></td>
+                <td className="col-1" onClick={this.handleDelete}> <FontAwesomeIcon icon={faTrashAlt} /></td>
             </tr>
         )
     }

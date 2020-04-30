@@ -20,6 +20,13 @@ export const addTasks = (projectId, tasks = []) => ({
 })
 
 //
+export const removeTaskById = (projectId, taskId) => ({
+    "type": "REMOVE_TASK_BY_ID",
+    projectId,
+    taskId
+})
+
+//
 export const updateProject = (projectId, update = []) => ({
     "type": "UPDATE_PROJECT",
     projectId,
