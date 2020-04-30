@@ -35,7 +35,7 @@ export default class ProjectCard extends Component {
                     <div className="col-1" onClick={this.handleClick}> {this.props.status} </div>
                     <div className="col-1" onClick={this.handleClick}> {this.props.doneTasks}/{this.props.totalTasks} </div>
 
-                    <div className="col-1" > <FontAwesomeIcon icon={faPencilAlt} /> </div>
+                    <Link to={`/projects/${this.props.projectId}/edit`}><div className="col-1"> <FontAwesomeIcon icon={faPencilAlt} /> </div></Link>
                     <div className="col-1" onClick={this.handleRemove}> <FontAwesomeIcon icon={faTrashAlt} /> </div>
                 </div>
 

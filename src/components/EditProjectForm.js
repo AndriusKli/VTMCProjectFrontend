@@ -16,15 +16,16 @@ function EditProjectForm() {
         projectName: project.projectName,
         projectDescription: project.projectDescription,
         projectManager: project.projectManager || "Add a manager",
-        projectDeadline: new Date(project.projectDeadline).toLocaleDateString('lt-LT')|| new Date(Date.now()).toLocaleDateString('lt-LT')
+        projectDeadline: new Date(project.projectDeadline).toLocaleDateString('lt-LT') || new Date(Date.now()).toLocaleDateString('lt-LT')
     });
 
     const handleUpdate = (event) => {
         event.preventDefault();
         const { name, value } = event.target;
+        console.log(history)
         setState({
             ...state,
-            [name]: value.trim()
+            [name]: value
         });
     }
 
@@ -36,20 +37,16 @@ function EditProjectForm() {
                 ...state,
             };
 
-
-            // CHANGE TO POST METHOD TO THE UPDATE METHOD
-
-            Axios.post(`http://localhost:8080/projects/`, payload).then(function(response) {
-                if (response.status === 202) {
+            Axios.patch(`http://localhost:8080/projects/${params.id}`, payload).then(response => {
+                if (response.status === 200) {
                     Axios.get(`http://localhost:8080/projects/${params.id}`).then(res => {
                         const data = res.data;
-
-                        dispatch(updateProject(parseInt(params.id),[data]));
-                        history.push(`/projects/${params.id}`);
-                     }); 
-                } 
+                        dispatch(updateProject(parseInt(params.id), data));
+                        history.goBack();
+                    });
+                }
             });
-            
+
         } else {
             alert("There are errors in your form, please try again.");
         }
@@ -58,9 +55,9 @@ function EditProjectForm() {
 
     function validateFields() {
         const { projectName, projectDescription, projectManager, projectDeadline } = { ...state };
-        const nameValid = (projectName.length < 100 && projectName !== '');
-        const descriptionValid = (projectDescription.length < 300 && projectDescription !== '');
-        const managerValid = (projectManager.length < 60 && projectManager !== '');
+        const nameValid = (projectName.length < 100 && projectName.trim() !== '');
+        const descriptionValid = (projectDescription.length < 300 && projectDescription.trim() !== '');
+        const managerValid = (projectManager.length < 60 && projectManager.trim() !== '');
         const dateValid = (projectDeadline !== '' && Date.parse(projectDeadline) >= Date.now());
 
         return nameValid && descriptionValid && managerValid && dateValid;
