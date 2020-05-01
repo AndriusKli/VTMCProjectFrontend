@@ -44,7 +44,7 @@ function EditProjectForm() {
 
             Axios.patch(`http://localhost:8080/projects/${params.id}`, payload).then(response => {
                 if (response.status === 200) {
-                    Axios.get(`http://localhost:8080/projects/${params.id}`).then(res => {
+                    Axios.get(`http://localhost:8080/projects/full/${params.id}`).then(res => {
                         const data = res.data;
                         dispatch(updateProject(parseInt(params.id), data));
                         history.goBack();
@@ -69,7 +69,7 @@ function EditProjectForm() {
 
     // For debugging
     useEffect(() => {
-        console.log(state);
+        console.log(project);
         console.log(validateFields());
     })
 

@@ -23,9 +23,6 @@ export default class ProjectCard extends Component {
         Axios.delete(`http://localhost:8080/projects/${this.props.projectId}`)
     }
 
-    
-
-
     render() {
         return (
             <li className="projectElement list-unstyled pt-1 pb-2 mt-1">
