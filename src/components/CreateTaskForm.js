@@ -13,8 +13,8 @@ function CreateTaskForm() {
     const [state, setState] = useState({
         taskName: '',
         taskDescription: '',
-        taskPriority: "Low",
-        taskStatus: "Not started",
+        taskPriority: "LOW",
+        taskStatus: "NOT_STARTED",
         taskDeadline: '',
         taskStory: ''
     });
@@ -99,9 +99,9 @@ function CreateTaskForm() {
                 <label className="col-sm-2 col-form-label">Priority</label>
                 <div className="col-sm-10">
                     <select onChange={handleUpdate} name="taskPriority">
-                        <option value="Low">Low</option>
-                        <option value="Medium">Medium</option>
-                        <option value="High">High</option>
+                        <option value="LOW">Low</option>
+                        <option value="MEDIUM">Medium</option>
+                        <option value="HIGH">High</option>
                     </select>
                 </div>
             </div>
@@ -110,9 +110,9 @@ function CreateTaskForm() {
                 <label className="col-sm-2 col-form-label">Status</label>
                 <div className="col-sm-10">
                     <select onChange={handleUpdate} name="taskStatus">
-                        <option value="Not started">Not started</option>
-                        <option value="In progress">In progress</option>
-                        <option value="Done">Done</option>
+                        <option value="NOT_STARTED">Not started</option>
+                        <option value="IN_PROGRESS">In progress</option>
+                        <option value="COMPLETE">Complete</option>
                     </select>
                 </div>
             </div>

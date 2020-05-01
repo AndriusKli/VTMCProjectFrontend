@@ -32,7 +32,7 @@ function CreateProjectForm() {
         if (validateFields()) {
             let payload = {
                 ...state,
-                "projectStatus": "Not started"
+                "projectStatus": "NOT_STARTED"
             };
 
             Axios.post(`http://localhost:8080/projects/`, payload).then(function(response) {
@@ -48,7 +48,7 @@ function CreateProjectForm() {
                                 "tasks": []
                             }]));
 
-                        history.push("/projects");
+                        history.goBack();
                      }); 
                 } 
             });

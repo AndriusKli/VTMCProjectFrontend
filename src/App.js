@@ -4,12 +4,13 @@ import MainProjectPage from './components/MainProjectPage';
 import { Switch, Route } from "react-router-dom";
 import Homepage from './components/Homepage';
 import { addProjects } from './actions/projects';
-import Axios from 'axios'
-import PageTemplate from './components/PageTemplate'
-import CreateProjectForm from './components/CreateProjectForm'
+import Axios from 'axios';
+import PageTemplate from './components/PageTemplate';
+import CreateProjectForm from './components/CreateProjectForm';
 import ProjectInfoPage from './components/ProjectInfoPage';
 import CreateTaskForm from './components/CreateTaskForm';
 import EditProjectForm from './components/EditProjectForm';
+import EditTaskForm from './components/EditTaskForm';
 
 export default class App extends React.Component {
 
@@ -49,6 +50,9 @@ export default class App extends React.Component {
             <Route path="/projects/:id/edit" exact={true} render={(props => <PageTemplate {...props} content={<EditProjectForm/>}/>)} />
 
             <Route path="/projects/:id/tasks/create" exact={true} render={(props => <PageTemplate {...props} content={<CreateTaskForm/>}/>)} />
+
+            <Route path="/projects/:id/tasks/:taskid/edit" exact={true} render={(props => <PageTemplate {...props} content={<EditTaskForm/>}/>)} />
+
 
             <Route>
               <h2> Insert 404 page here! </h2>

@@ -112,9 +112,9 @@ function ProjectInfoPage() {
                             <th className="col-4">NAME</th>
                             <th className="col-1">PRIORITY</th>
                             <th className="col-1">STATUS</th>
+                            <th className="col-1">DEADLINE</th>
                             <th className="col-1">CREATED ON</th>
                             <th className="col-1">MODIFIED ON</th>
-                            <th className="col-1">DEADLINE</th>
                             <th className="col-1">VIEW</th>
                             <th className="col-1">DEL</th>
                         </tr>
@@ -122,7 +122,7 @@ function ProjectInfoPage() {
                     <tbody>
 
                         {project.tasks.map(task => <TaskCard
-                            key={task.taskId}
+                            key={task.taskId}                            
                             id={task.taskId}
                             name={task.taskName}
                             priority={task.taskPriority}

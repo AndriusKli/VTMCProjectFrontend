@@ -28,6 +28,11 @@ function EditProjectForm() {
             [name]: value
         });
     }
+    
+    const handleClose = (event) => {
+        event.preventDefault();
+        history.goBack();
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -46,7 +51,6 @@ function EditProjectForm() {
                     });
                 }
             });
-
         } else {
             alert("There are errors in your form, please try again.");
         }
@@ -107,7 +111,7 @@ function EditProjectForm() {
             <div className="form-group row text-right mb-3">
                 <div className="col-12">
                     <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Save</button>
-                    <Link to={`/projects/${params.id}`}> <div className="btn btn-info" role="button">Close</div> </Link>
+                    <div className="btn btn-info" role="button" onClick={handleClose}>Close</div>
                 </div>
 
             </div>
