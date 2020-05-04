@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import TaskCard from './TaskCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams, useHistory } from 'react-router-dom';
@@ -19,6 +19,15 @@ function ProjectInfoPage() {
     const filters = useSelector(state => state.filters)
 
     const filteredTasks = selectTasks(project.tasks, filters);
+
+
+    // Clear filters when navigating away from the page.
+    useEffect(() => {
+        history.listen(() => {
+            dispatch(filterBySearch());
+            dispatch(filterStatusBy());
+        })
+    },[dispatch, history])
 
     const handleProjectDelete = (event) => {
         event.preventDefault();
