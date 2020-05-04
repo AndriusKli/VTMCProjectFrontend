@@ -1,8 +1,9 @@
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import Axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateProject } from '../actions/projects'
+import NotFoundPage from './NotFoundPage';
 
 
 function EditProjectForm() {
@@ -28,7 +29,7 @@ function EditProjectForm() {
             [name]: value
         });
     }
-    
+
     const handleClose = (event) => {
         event.preventDefault();
         history.goBack();
@@ -73,50 +74,59 @@ function EditProjectForm() {
         console.log(validateFields());
     })
 
+    function pageFound() {
+        if (project === undefined) {
+            return <NotFoundPage />
+        } else {
+            return (
+                <form className="container col-7">
+                    <div className="form-group row">
+                        <label className="col-2 col-form-label">Project Name</label>
+                        <div className="col-10">
+                            <input type="name" className="form-control" id="inputName" name="projectName" value={state.projectName} onChange={handleUpdate} />
+                        </div>
+                    </div>
+
+                    <div className="form row">
+                        <label className="col-2 col-form-label" >Description</label>
+                        <div className="col-10">
+                            <textarea className="form-control" style={{ resize: "none" }} value={state.projectDescription} name="projectDescription" id="inputdescription" rows="5" onChange={handleUpdate} ></textarea>
+                        </div>
+                    </div>
+                    <br />
+
+                    <div className="form-group row">
+                        <label className="col-2 col-form-label">Project Manager</label>
+                        <div className="col-10">
+                            <input type="projectmanager" className="form-control" value={state.projectManager} id="inputProjectmanager" name="projectManager" onChange={handleUpdate} />
+                        </div>
+                    </div>
+
+                    <div className="form-group row">
+                        <label className="col-2 col-form-label">Deadline</label>
+                        <div className="col-10">
+                            <input type="date" className="form-control" id="deadline" value={state.projectDeadline} name="projectDeadline" onChange={handleUpdate} />
+
+                        </div>
+                    </div>
+
+
+                    <div className="form-group row text-right mb-3">
+                        <div className="col-12">
+                            <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Save</button>
+                            <div className="btn btn-info" role="button" onClick={handleClose}>Close</div>
+                        </div>
+
+                    </div>
+
+                </form>
+            )
+        }
+    }
 
     return (
+        pageFound()
 
-        <form className="container col-7">
-            <div className="form-group row">
-                <label className="col-2 col-form-label">Project Name</label>
-                <div className="col-10">
-                    <input type="name" className="form-control" id="inputName" name="projectName" value={state.projectName} onChange={handleUpdate} />
-                </div>
-            </div>
-
-            <div className="form row">
-                <label className="col-2 col-form-label" >Description</label>
-                <div className="col-10">
-                    <textarea className="form-control" style={{ resize: "none" }} value={state.projectDescription} name="projectDescription" id="inputdescription" rows="5" onChange={handleUpdate} ></textarea>
-                </div>
-            </div>
-            <br />
-
-            <div className="form-group row">
-                <label className="col-2 col-form-label">Project Manager</label>
-                <div className="col-10">
-                    <input type="projectmanager" className="form-control" value={state.projectManager} id="inputProjectmanager" name="projectManager" onChange={handleUpdate} />
-                </div>
-            </div>
-
-            <div className="form-group row">
-                <label className="col-2 col-form-label">Deadline</label>
-                <div className="col-10">
-                    <input type="date" className="form-control" id="deadline" value={state.projectDeadline} name="projectDeadline" onChange={handleUpdate} />
-
-                </div>
-            </div>
-
-
-            <div className="form-group row text-right mb-3">
-                <div className="col-12">
-                    <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Save</button>
-                    <div className="btn btn-info" role="button" onClick={handleClose}>Close</div>
-                </div>
-
-            </div>
-
-        </form>
     )
 }
 

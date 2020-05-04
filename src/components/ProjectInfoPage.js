@@ -1,19 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import TaskCard from './TaskCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import Axios from 'axios';
 import { removeProjectById } from '../actions/projects';
+import NotFoundPage from './NotFoundPage';
+import selectTasks from '../selectors/tasks';
+import { filterBySearch, filterStatusBy } from '../actions/filters'
 
 
 function ProjectInfoPage() {
-
 
     let dispatch = useDispatch();
     let params = useParams();
     let history = useHistory();
 
     const project = useSelector(state => state.projects.find(({ projectId }) => projectId === parseInt(params.id)));
+    const filters = useSelector(state => state.filters)
+
+    const filteredTasks = selectTasks(project.tasks, filters);
 
     const handleProjectDelete = (event) => {
         event.preventDefault();
@@ -24,121 +29,135 @@ function ProjectInfoPage() {
         }
     }
 
-    const handleSubmit = (event) => {
+    const handleSearchChange = (event) => {
         event.preventDefault();
-        console.log(project)
+        dispatch(filterBySearch(event.target.value.trim()));
+    }
+
+    const handleFilterChange = (event, filter) => {
+        event.preventDefault();
+        dispatch(filterStatusBy(filter));
+    }
+
+    function pageFound() {
+        if (project === undefined) {
+            return <NotFoundPage />
+        } else {
+            return (
+                <div className="container" id="pageHeader">
+
+                    <header className="text-center text-light my-4">
+                        <nav className="navbar navbar-expand navbar-light">
+                            <div className="collapse navbar-collapse" id="left">
+                                <ul className="navbar-nav mr-auto">
+                                    <li className="nav-item active">
+                                        <Link to="/"><div className="btn"><i className="fa fa-home"></i></div></Link>
+                                    </li>
+                                    <li className="nav-item active">
+                                        <button className="btn"><i className="fa fa-bars"></i></button>
+                                    </li>
+                                    <li className="nav-item">
+                                        <form className="search">
+                                            <input className="form-control m-auto" type="text" name="search" placeholder="Search for tasks..."
+                                                onChange={handleSearchChange} />
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div className="collapse navbar-collapse" id="right">
+                                <ul className="nav navbar-nav ml-auto">
+                                    <li className="nav-item">
+                                        <Link to={`/projects/${params.id}/edit`}><span className="nav-link" href="/#">EDIT PROJECT</span></Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <span className="nav-link" onClick={handleProjectDelete}>DELETE PROJECT</span>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to="/projects"> <span className="nav-link">CLOSE</span> </Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </header>
+
+                    <div className="my-projectcontainer">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col"> <b> Project ID: </b> {params.id} </div>
+                                <div className="col"> <b> Name: </b> {project.projectName} </div>
+                                <div className="col"> <b> Status: </b> {project.projectStatus}s</div>
+                                <div className="w-100"></div>
+                                <div className="col"> <b> Deadline: </b> {new Date(project.projectDeadline).toLocaleString('lt-LT')} </div>
+                                <div className="col"> <b> Project manager: </b> {project.projectManager}</div>
+                                <div className="col"> <b> Modified on: </b> {new Date(project.projectModifiedOn).toLocaleString('lt-LT')} </div>
+                                <div className="w-100"></div>
+                                <div className="col"> <b> Create date: </b> {new Date(project.projectCreatedOn).toLocaleString('lt-LT')} </div>
+
+                            </div>
+                        </div>
+                        <div className="container my-description">
+                            <div className="row">
+                                <div className="col-12"> <b> Description: </b> {project.projectDescription} </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="my-taskbar">
+                        <div className="container">
+                            <div className="row">
+                                <div><span className="col" onClick={(event) => handleFilterChange(event, '')}>ALL</span></div>
+                                <div><span className="col" onClick={(event) => handleFilterChange(event, "NOT_STARTED")}>NOT STARTED</span></div>
+                                <div><span className="col" onClick={(event) => handleFilterChange(event, "IN_PROGRESS")}>IN PROGRESS</span></div>
+                                <div><span className="col" onClick={(event) => handleFilterChange(event, "CANCELED")}>CANCELED</span></div>
+                                <div><span className="col" onClick={(event) => handleFilterChange(event, "COMPLETE")}>COMPLETE</span></div>
+                                <Link to={`/projects/${params.id}/tasks/create`}> <div><span className="col">NEW TASK+</span></div> </Link>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="my-table">
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    <th className="col-1">ID</th>
+                                    <th className="col-4">NAME</th>
+                                    <th className="col-1">PRIORITY</th>
+                                    <th className="col-1">STATUS</th>
+                                    <th className="col-1">DEADLINE</th>
+                                    <th className="col-1">CREATED ON</th>
+                                    <th className="col-1">MODIFIED ON</th>
+                                    <th className="col-1"></th>
+                                    <th className="col-1"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {filteredTasks.map(task => <TaskCard
+                                    key={task.taskId}
+                                    id={task.taskId}
+                                    name={task.taskName}
+                                    priority={task.taskPriority}
+                                    created={new Date(task.taskCreatedOn).toLocaleDateString('lt-LT')}
+                                    modified={new Date(task.taskModifiedOn).toLocaleDateString('lt-LT')}
+                                    deadline={new Date(task.taskDeadline).toLocaleDateString('lt-LT')}
+                                    status={task.taskStatus}
+                                    dispatch={dispatch}
+                                    projectId={params.id}
+                                />)}
+
+                            </tbody>
+                        </table>
+                        <br />
+                    </div>
+                </div>
+            )
+        }
     }
 
 
     return (
-        <div className="container" id="pageHeader">
-
-            <header className="text-center text-light my-4">
-                <nav className="navbar navbar-expand navbar-light">
-                    <div className="collapse navbar-collapse" id="left">
-                        <ul className="navbar-nav mr-auto">
-                            <li className="nav-item active">
-                                <Link to="/"><div className="btn"><i className="fa fa-home"></i></div></Link>
-                            </li>
-                            <li className="nav-item active">
-                                <button className="btn"><i className="fa fa-bars"></i></button>
-                            </li>
-                            <li className="nav-item">
-                                <form className="search">
-                                    <input className="form-control m-auto" type="text" name="search" placeholder="Search for tasks..." />
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div className="collapse navbar-collapse" id="right">
-                        <ul className="nav navbar-nav ml-auto">
-                            <li className="nav-item">
-                                <Link to={`/projects/${params.id}/edit`}><span className="nav-link" href="/#">EDIT PROJECT</span></Link>
-                            </li>
-                            <li className="nav-item">
-                                <span className="nav-link" onClick={handleProjectDelete}>DELETE PROJECT</span>
-                            </li>
-                            <li className="nav-item">
-                                <Link to="/projects"> <span className="nav-link">CLOSE</span> </Link>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </header>
-
-
-
-            <div className="my-projectcontainer">
-                <div className="container">
-                    <div className="row">
-                        <div className="col"> <b> Project ID: </b> {params.id} </div>
-                        <div className="col"> <b> Name: </b> {project.projectName} </div>
-                        <div className="col"> <b> Status: </b> {project.projectStatus}s</div>
-                        <div className="w-100"></div>
-                        <div className="col"> <b> Deadline: </b> {new Date(project.projectDeadline).toLocaleString('lt-LT')} </div>
-                        <div className="col"> <b> Project manager: </b> {project.projectManager}</div>
-                        <div className="col"> <b> Modified on: </b> {new Date(project.projectModifiedOn).toLocaleString('lt-LT')} </div>
-                        <div className="w-100"></div>
-                        <div className="col"> <b> Create date: </b> {new Date(project.projectCreatedOn).toLocaleString('lt-LT')} </div>
-
-                    </div>
-                </div>
-                <div className="container my-description">
-                    <div className="row">
-                        <div className="col-12"> <b> Description: </b> {project.projectDescription} </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div className="my-taskbar">
-                <div className="container">
-                    <div className="row">
-                        <div><a className="col" href="/#">ALL</a></div>
-                        <div><a className="col" href="/#">NOT STARTED</a></div>
-                        <div><a className="col" href="/#">IN PROGRESS</a></div>
-                        <div><a className="col" href="/#">CLOSED</a></div>
-                        <Link to={`/projects/${params.id}/tasks/create`}> <div><span className="col">NEW TASK+</span></div> </Link>
-                    </div>
-                </div>
-            </div>
-
-            <div className="my-table">
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th className="col-1">ID</th>
-                            <th className="col-4">NAME</th>
-                            <th className="col-1">PRIORITY</th>
-                            <th className="col-1">STATUS</th>
-                            <th className="col-1">DEADLINE</th>
-                            <th className="col-1">CREATED ON</th>
-                            <th className="col-1">MODIFIED ON</th>
-                            <th className="col-1">VIEW</th>
-                            <th className="col-1">DEL</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        {project.tasks.map(task => <TaskCard
-                            key={task.taskId}                            
-                            id={task.taskId}
-                            name={task.taskName}
-                            priority={task.taskPriority}
-                            created={new Date(task.taskCreatedOn).toLocaleDateString('lt-LT')}
-                            modified={new Date(task.taskModifiedOn).toLocaleDateString('lt-LT')}
-                            deadline={new Date(task.taskDeadline).toLocaleDateString('lt-LT')}
-                            status={task.taskStatus}
-                            dispatch={dispatch}
-                            projectId={params.id}
-                        />)}
-
-                    </tbody>
-                </table>
-                <br />
-            </div>
-        </div>
+        pageFound()
     )
 }
 

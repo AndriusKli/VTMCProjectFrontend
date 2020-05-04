@@ -11,6 +11,7 @@ import ProjectInfoPage from './components/ProjectInfoPage';
 import CreateTaskForm from './components/CreateTaskForm';
 import EditProjectForm from './components/EditProjectForm';
 import EditTaskForm from './components/EditTaskForm';
+import NotFoundPage from './components/NotFoundPage';
 
 export default class App extends React.Component {
 
@@ -34,7 +35,7 @@ export default class App extends React.Component {
         {this.state.doneRetrieving ?
           <Switch>
             <Route path="/" exact={true}>
-              <Homepage />
+              <Homepage/>
             </Route>
 
             <Route path="/projects" exact={true}>
@@ -55,11 +56,11 @@ export default class App extends React.Component {
 
 
             <Route>
-              <h2> Insert 404 page here! </h2>
+              <NotFoundPage/>
             </Route>
 
           </Switch>
-          : null}
+          : null }
       </div >
     )
   }

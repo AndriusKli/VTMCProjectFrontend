@@ -198,3 +198,23 @@ body {
   span:hover {
     cursor: pointer;
   }
+
+  #page404 {
+    background: #dedede;
+  }
+  .page-wrap {
+    min-height: 100vh;
+  }
+
+
+  /* 2020-05-04  Link styles */
+  a:hover {
+    text-decoration: none;
+    color: #000000;
+  }
+
+  a {
+    text-decoration: none;
+    color: #000000;
+  }
+

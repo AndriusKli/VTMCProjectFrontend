@@ -11,7 +11,7 @@ export default class Homepage extends Component {
                     <h1>Project Task Management Program</h1>
                     <h3>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.<br />
                         Maecenas porttitor congue massa. </h3>
-                    <Link to="/projects"><div className="btn2">Let’s start</div></Link>
+                    <Link to="/projects"><button className="btn2">Let’s start</button></Link>
                     <div><img className="responsive" id="homeImage" src={require("../images/titulinis.png")} alt="Homepage" /></div>
                 </div>
 

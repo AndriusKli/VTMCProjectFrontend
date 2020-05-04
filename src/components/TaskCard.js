@@ -26,7 +26,7 @@ export default class TaskCard extends Component {
                 <td className="col-1">{this.props.deadline}</td>
                 <td className="col-1">{this.props.created}</td>
                 <td className="col-1">{this.props.modified}</td>
-                <td className="col-1"> <Link to={`/projects/${this.props.projectId}/tasks/${this.props.id}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link> </td>
+                <td className="col-1 text-center"> <Link to={`/projects/${this.props.projectId}/tasks/${this.props.id}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link> </td>
                 <td className="col-1" onClick={this.handleDelete}> <FontAwesomeIcon icon={faTrashAlt} /></td>
             </tr>
         )

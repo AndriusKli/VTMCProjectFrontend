@@ -12,7 +12,10 @@ const MainProjectPage = (props) => (
                 <div className="collapse navbar-collapse" id="left">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item active">
-                            <Link to="/"><div className="btn"><i className="fa fa-home"></i></div></Link>
+                            <Link to="/"><div className="btn" onClick={() => {
+                                props.dispatch(filterStatusBy(''));
+                                props.dispatch(filterBySearch(''));
+                            }}><i className="fa fa-home"></i></div></Link>
                         </li>
                         <li className="nav-item active">
                             <button className="btn"><i className="fa fa-bars"></i></button>
@@ -60,10 +63,13 @@ const MainProjectPage = (props) => (
             </nav>
 
             <div>
-                <Link to="/projects/new"><div className="new-project-link" href="/#">NEW PROJECT+</div></Link>
+                <Link to="/projects/new"><div className="new-project-link" onClick={() => {
+                    props.dispatch(filterStatusBy(''));
+                    props.dispatch(filterBySearch(''));
+                }}>NEW PROJECT+</div></Link>
             </div>
         </header>
-        <br/>
+        <br />
 
         <ProjectContainer />
 
