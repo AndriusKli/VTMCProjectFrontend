@@ -5,7 +5,7 @@ import selectProjects from '../selectors/projects';
 
 const ProjectContainer = (props) => (
     <>
-        <ul id="projectContainer">
+        <ul className="container-fluid list-unstyled" id="projectContainer">
             {props.projects.map(project =>
                 <ProjectCard key={project.projectId} projectId={project.projectId} projectName={project.projectName} status={project.projectStatus} doneTasks={project.completeTasks}
                     totalTasks={project.totalTasks} projectDescription={project.projectDescription} dispatch={props.dispatch}/>

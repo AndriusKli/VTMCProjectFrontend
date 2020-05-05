@@ -34,28 +34,28 @@ const MainProjectPage = (props) => (
                 <div className="collapse navbar-collapse" id="right">
                     <ul className="nav navbar-nav ml-auto">
                         <li className="nav-item">
-                            <a className="nav-link" href="/#" onClick={(event) => {
+                            <span className="nav-link" onClick={(event) => {
                                 event.preventDefault();
                                 props.dispatch(filterStatusBy())
-                            }} >ALL</a>
+                            }} >ALL</span>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/#" onClick={(event) => {
+                            <span className="nav-link" onClick={(event) => {
                                 event.preventDefault();
                                 props.dispatch(filterStatusBy("Not started"))
-                            }} >NOT STARTED</a>
+                            }} >NOT STARTED</span>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/#" onClick={(event) => {
+                            <span className="nav-link" onClick={(event) => {
                                 event.preventDefault();
                                 props.dispatch(filterStatusBy("In progress"))
-                            }} >IN PROGRESS</a>
+                            }} >IN PROGRESS</span>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/#" onClick={(event) => {
+                            <span className="nav-link" onClick={(event) => {
                                 event.preventDefault();
                                 props.dispatch(filterStatusBy("Complete"))
-                            }} >COMPLETE</a>
+                            }} >COMPLETE</span>
                         </li>
                     </ul>
                 </div>

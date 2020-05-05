@@ -17,6 +17,7 @@ export default class ProjectCard extends Component {
     //         expanded: !this.state.expanded
     //     })
     // }
+    // {this.state.expanded && <div> {this.props.projectDescription} </div>}
 
     handleRemove = () => {
         this.props.dispatch(removeProjectById(this.props.projectId));
@@ -25,19 +26,15 @@ export default class ProjectCard extends Component {
 
     render() {
         return (
-            <li className="projectElement list-unstyled pt-1 pb-2 mt-1">
-                <div className="row">
-                    <div className="col-7" > {this.props.projectName} </div>
-                    <Link to={`/projects/${this.props.projectId}`}> <span className="col-1" href="/#">View project</span> </Link>
-                    <div className="col-1" > {this.props.status} </div>
-                    <div className="col-1" > {this.props.doneTasks}/{this.props.totalTasks} </div>
-
-                    <Link to={`/projects/${this.props.projectId}/edit`}><div className="col-1"> <FontAwesomeIcon icon={faPencilAlt} /> </div></Link>
-                    <div className="col-1" onClick={this.handleRemove}> <FontAwesomeIcon icon={faTrashAlt} /> </div>
+            <li >
+                <div className="row pt-1 pl-3 pb-2 mt-1">
+                    <div className="col-7"> {this.props.projectName} </div>
+                    <span className="col-1"> <Link to={`/projects/${this.props.projectId}`}>View project </Link></span>
+                    <div className="col-1"> {this.props.status} </div>
+                    <div className="col-1"> {this.props.doneTasks}/{this.props.totalTasks} </div>
+                    <div className="col-1"> <Link to={`/projects/${this.props.projectId}/edit`}> <FontAwesomeIcon icon={faPencilAlt} /> </Link> </div>
+                    <span className="col-1" onClick={this.handleRemove}> <FontAwesomeIcon icon={faTrashAlt} /> </span>
                 </div>
-
-                {/* {this.state.expanded && <div> {this.props.projectDescription} </div>} */}
-
             </li>
         )
     }

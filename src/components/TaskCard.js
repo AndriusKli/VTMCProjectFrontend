@@ -18,17 +18,20 @@ export default class TaskCard extends Component {
 
     render() {
         return (
-            <tr className="taskItem">
-                <th className="col-1">{this.props.id}</th>
-                <td className="col-4">{this.props.name}</td>
-                <td className="col-1">{this.props.priority}</td>
-                <td className="col-1">{this.props.status}</td>
-                <td className="col-1">{this.props.deadline}</td>
-                <td className="col-1">{this.props.created}</td>
-                <td className="col-1">{this.props.modified}</td>
-                <td className="col-1 text-center"> <Link to={`/projects/${this.props.projectId}/tasks/${this.props.id}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link> </td>
-                <td className="col-1" onClick={this.handleDelete}> <FontAwesomeIcon icon={faTrashAlt} /></td>
-            </tr>
+
+            <tbody>
+                <tr className="row">
+                    <td className="col-1"> {this.props.id} </td>
+                    <td className="col-4"> {this.props.name} </td>
+                    <td className="col-1 text-center"> {this.props.priority} </td>
+                    <td className="col-1 text-center"> {this.props.status} </td>
+                    <td className="col-1 text-center"> {this.props.deadline} </td>
+                    <td className="col-1 text-center"> {this.props.created} </td>
+                    <td className="col-1 text-center"> {this.props.modified} </td>
+                    <td className="col-1 text-center"> <Link to={`/projects/${this.props.projectId}/tasks/${this.props.id}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link></td>
+                    <td className="col-1 text-center" onClick={this.handleDelete}> <span><FontAwesomeIcon icon={faTrashAlt} /> </span></td>
+                </tr>
+            </tbody>
         )
     }
 }

@@ -27,7 +27,7 @@ function ProjectInfoPage() {
             dispatch(filterBySearch());
             dispatch(filterStatusBy());
         })
-    },[dispatch, history])
+    }, [dispatch, history])
 
     const handleProjectDelete = (event) => {
         event.preventDefault();
@@ -125,37 +125,35 @@ function ProjectInfoPage() {
                         </div>
                     </div>
 
-                    <div className="my-table">
+                    <div className="my-table container-fluid">
                         <table className="table">
                             <thead>
-                                <tr>
-                                    <th className="col-1">ID</th>
-                                    <th className="col-4">NAME</th>
-                                    <th className="col-1">PRIORITY</th>
-                                    <th className="col-1">STATUS</th>
-                                    <th className="col-1">DEADLINE</th>
-                                    <th className="col-1">CREATED ON</th>
-                                    <th className="col-1">MODIFIED ON</th>
-                                    <th className="col-1"></th>
-                                    <th className="col-1"></th>
+                                <tr className="row">
+                                    <th className="col-1"> ID </th>
+                                    <th className="col-4 "> NAME </th>
+                                    <th className="col-1 text-center"> PRIORITY </th>
+                                    <th className="col-1 text-center"> STATUS </th>
+                                    <th className="col-1 text-center"> DEADLINE </th>
+                                    <th className="col-1 text-center"> CREATED ON </th>
+                                    <th className="col-1 text-center"> MODIFIED ON </th>
+                                    <th className="col-1 text-center"> EDIT </th>
+                                    <th className="col-1 text-center"> DELETE </th>
                                 </tr>
                             </thead>
-                            <tbody>
 
-                                {filteredTasks.map(task => <TaskCard
-                                    key={task.taskId}
-                                    id={task.taskId}
-                                    name={task.taskName}
-                                    priority={task.taskPriority}
-                                    created={new Date(task.taskCreatedOn).toLocaleDateString('lt-LT')}
-                                    modified={new Date(task.taskModifiedOn).toLocaleDateString('lt-LT')}
-                                    deadline={new Date(task.taskDeadline).toLocaleDateString('lt-LT')}
-                                    status={task.taskStatus}
-                                    dispatch={dispatch}
-                                    projectId={params.id}
-                                />)}
+                            {filteredTasks.map(task => <TaskCard
+                                key={task.taskId}
+                                id={task.taskId}
+                                name={task.taskName}
+                                priority={task.taskPriority}
+                                created={new Date(task.taskCreatedOn).toLocaleDateString('lt-LT')}
+                                modified={new Date(task.taskModifiedOn).toLocaleDateString('lt-LT')}
+                                deadline={new Date(task.taskDeadline).toLocaleDateString('lt-LT')}
+                                status={task.taskStatus}
+                                dispatch={dispatch}
+                                projectId={params.id}
+                            />)}
 
-                            </tbody>
                         </table>
                         <br />
                     </div>
