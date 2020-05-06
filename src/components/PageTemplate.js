@@ -14,7 +14,7 @@ export default class PageTemplate extends Component {
                                     <Link to="/"><div className="btn"><i className="fa fa-home"></i></div></Link>
                                 </li>
                                 <li className="nav-item active">
-                                    <button className="btn"><i className="fa fa-bars"></i></button>
+                                    <Link to="/maintenance"><button className="btn"><i className="fa fa-bars"></i></button></Link>
                                 </li>
                             </ul>
                         </div>

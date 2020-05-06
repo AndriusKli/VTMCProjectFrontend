@@ -21,7 +21,7 @@ function ProjectInfoPage() {
     const filteredTasks = selectTasks(project.tasks, filters);
 
 
-    // Clear filters when navigating away from the page.
+    // Clears filters when navigating away from the page.
     useEffect(() => {
         history.listen(() => {
             dispatch(filterBySearch());
@@ -48,6 +48,31 @@ function ProjectInfoPage() {
         dispatch(filterStatusBy(filter));
     }
 
+    // Yeah, this is a bad solution, but I messed up the initial setup and I'm too lazy to fix it now, don't judge me. :(
+    function parseStatus(status) {
+        switch (status) {
+            case 'IN_PROGRESS':
+                return 'In progress';
+            case 'NOT_STARTED':
+                return 'Not started';
+            case 'COMPLETE':
+                return 'Complete';
+            case 'CANCELED':
+                return 'Canceled';
+        }
+    }
+
+    function parsePriority(priority) {
+        switch (priority) {
+            case 'HIGH':
+                return 'High';
+            case 'MEDIUM':
+                return 'Medium';
+            case 'LOW':
+                return 'Low';
+        }
+    }
+
     function pageFound() {
         if (project === undefined) {
             return <NotFoundPage />
@@ -63,7 +88,7 @@ function ProjectInfoPage() {
                                         <Link to="/"><div className="btn"><i className="fa fa-home"></i></div></Link>
                                     </li>
                                     <li className="nav-item active">
-                                        <button className="btn"><i className="fa fa-bars"></i></button>
+                                        <Link to="/maintenance"><button className="btn"><i className="fa fa-bars"></i></button></Link>
                                     </li>
                                     <li className="nav-item">
                                         <form className="search">
@@ -130,7 +155,8 @@ function ProjectInfoPage() {
                             <thead>
                                 <tr className="row">
                                     <th className="col-1"> ID </th>
-                                    <th className="col-4 "> NAME </th>
+                                    <th className="col-3 "> NAME </th>
+                                    <th className="col-1 text-center"> INFO </th>
                                     <th className="col-1 text-center"> PRIORITY </th>
                                     <th className="col-1 text-center"> STATUS </th>
                                     <th className="col-1 text-center"> DEADLINE </th>
@@ -145,13 +171,15 @@ function ProjectInfoPage() {
                                 key={task.taskId}
                                 id={task.taskId}
                                 name={task.taskName}
-                                priority={task.taskPriority}
+                                priority={parsePriority(task.taskPriority)}
                                 created={new Date(task.taskCreatedOn).toLocaleDateString('lt-LT')}
                                 modified={new Date(task.taskModifiedOn).toLocaleDateString('lt-LT')}
                                 deadline={new Date(task.taskDeadline).toLocaleDateString('lt-LT')}
-                                status={task.taskStatus}
+                                status={parseStatus(task.taskStatus)}
                                 dispatch={dispatch}
                                 projectId={params.id}
+                                story={task.taskStory}
+                                description={task.taskDescription}
                             />)}
 
                         </table>

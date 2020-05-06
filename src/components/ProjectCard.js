@@ -8,17 +8,6 @@ import { Link } from "react-router-dom";
 
 export default class ProjectCard extends Component {
 
-    // state = {
-    //     expanded: false
-    // }
-
-    // handleClick = () => {
-    //     this.setState({
-    //         expanded: !this.state.expanded
-    //     })
-    // }
-    // {this.state.expanded && <div> {this.props.projectDescription} </div>}
-
     handleRemove = () => {
         this.props.dispatch(removeProjectById(this.props.projectId));
         Axios.delete(`http://localhost:8080/projects/${this.props.projectId}`)

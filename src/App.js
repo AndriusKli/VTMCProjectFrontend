@@ -12,6 +12,7 @@ import CreateTaskForm from './components/CreateTaskForm';
 import EditProjectForm from './components/EditProjectForm';
 import EditTaskForm from './components/EditTaskForm';
 import NotFoundPage from './components/NotFoundPage';
+import MaintenancePage from './components/MaintenancePage';
 
 export default class App extends React.Component {
 
@@ -34,8 +35,13 @@ export default class App extends React.Component {
       <div>
         {this.state.doneRetrieving ?
           <Switch>
+
             <Route path="/" exact={true}>
-              <Homepage/>
+              <Homepage />
+            </Route>
+
+            <Route path="/maintenance" exact={true}>
+              <PageTemplate content={<MaintenancePage />} />
             </Route>
 
             <Route path="/projects" exact={true}>
@@ -44,23 +50,23 @@ export default class App extends React.Component {
 
             <Route path="/projects/new" exact={true}>
               <PageTemplate content={<CreateProjectForm />} />
-            </Route> 
+            </Route>
 
             <Route path="/projects/:id" exact={true} component={ProjectInfoPage} />
 
-            <Route path="/projects/:id/edit" exact={true} render={(props => <PageTemplate {...props} content={<EditProjectForm/>}/>)} />
+            <Route path="/projects/:id/edit" exact={true} render={(props => <PageTemplate {...props} content={<EditProjectForm />} />)} />
 
-            <Route path="/projects/:id/tasks/create" exact={true} render={(props => <PageTemplate {...props} content={<CreateTaskForm/>}/>)} />
+            <Route path="/projects/:id/tasks/create" exact={true} render={(props => <PageTemplate {...props} content={<CreateTaskForm />} />)} />
 
-            <Route path="/projects/:id/tasks/:taskid/edit" exact={true} render={(props => <PageTemplate {...props} content={<EditTaskForm/>}/>)} />
+            <Route path="/projects/:id/tasks/:taskid/edit" exact={true} render={(props => <PageTemplate {...props} content={<EditTaskForm />} />)} />
 
 
             <Route>
-              <NotFoundPage/>
+              <NotFoundPage />
             </Route>
 
           </Switch>
-          : null }
+          : null}
       </div >
     )
   }

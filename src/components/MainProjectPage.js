@@ -18,7 +18,10 @@ const MainProjectPage = (props) => (
                             }}><i className="fa fa-home"></i></div></Link>
                         </li>
                         <li className="nav-item active">
-                            <button className="btn"><i className="fa fa-bars"></i></button>
+                        <Link to="/maintenance"> <button className="btn" onClick={() => {
+                                props.dispatch(filterStatusBy(''));
+                                props.dispatch(filterBySearch(''));
+                            }}><i className="fa fa-bars"></i></button></Link>
                         </li>
                         <li className="nav-item">
                             <form className="search">
