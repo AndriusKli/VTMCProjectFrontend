@@ -37,6 +37,7 @@ function EditProjectForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        event.target.disabled = true;
 
         if (validateFields()) {
             let payload = {
@@ -50,10 +51,13 @@ function EditProjectForm() {
                         dispatch(updateProject(parseInt(params.id), data));
                         history.goBack();
                     });
+                } else {
+                    event.target.disabled = false;
                 }
             });
         } else {
             alert("There are errors in your form, please try again.");
+            event.target.disabled = false;
         }
 
     }

@@ -57,7 +57,7 @@ function ProjectInfoPage() {
                 return 'Not started';
             case 'COMPLETE':
                 return 'Complete';
-            case 'CANCELED':
+            default:
                 return 'Canceled';
         }
     }
@@ -68,7 +68,7 @@ function ProjectInfoPage() {
                 return 'High';
             case 'MEDIUM':
                 return 'Medium';
-            case 'LOW':
+            default:
                 return 'Low';
         }
     }

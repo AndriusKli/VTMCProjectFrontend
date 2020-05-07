@@ -41,6 +41,7 @@ function CreateTaskForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        event.target.disabled = true;
 
         if (validateFields()) {
             let payload = {
@@ -50,18 +51,23 @@ function CreateTaskForm() {
             Axios.post(`http://localhost:8080/projects/${params.id}/tasks`, payload).then(response => {
                 if (response.status === 202) {
                     Axios.get(`http://localhost:8080/projects/full/${params.id}`).then(response => {
-                        if (response.status === 200) {                            
+                        if (response.status === 200) {
                             dispatch(updateProject(parseInt(params.id), response.data));
                             history.push(`/projects/${params.id}`);
+                        } else {
+                            alert("Something went wrong, try again.");
+                            event.target.disabled = false;
                         }
-                        // Insert failstate
                     });
+                } else {
+                    alert("Something went wrong, try again.");
+                    event.target.disabled = false;
                 }
-                // Insert failstate
             });
 
         } else {
             alert("There are errors in your form, please try again.");
+            event.target.disabled = false;
         }
 
     }

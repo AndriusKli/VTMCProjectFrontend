@@ -42,6 +42,7 @@ function EditTaskForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        event.target.disabled = true;
 
         if (validateFields()) {
             let payload = {
@@ -55,15 +56,18 @@ function EditTaskForm() {
                             dispatch(updateProject(parseInt(params.id), response.data));
                             history.goBack();
                         } else {
-                        alert("Something went wrong, please try again.")
+                            alert("Something went wrong, please try again.")
+                            event.target.disabled = false;
                         }
                     });
                 } else {
                     alert("Something went wrong, please try again.")
+                    event.target.disabled = false;
                 }
             });
         } else {
             alert("There are errors in your form, please try again.");
+            event.target.disabled = false;
         }
     }
 

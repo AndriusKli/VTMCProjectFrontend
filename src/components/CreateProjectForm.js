@@ -28,8 +28,10 @@ function CreateProjectForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+       
 
         if (validateFields()) {
+            event.target.disabled = true;
             let payload = {
                 ...state,
                 "projectStatus": "NOT_STARTED"
@@ -50,11 +52,15 @@ function CreateProjectForm() {
 
                         history.goBack();
                      }); 
+                } else {
+                    alert("Something went wrong, try again.")
+                    event.target.disabled = false;
                 } 
             });
             
         } else {
             alert("There are errors in your form, please try again.");
+            event.target.disabled = false;
         }
 
     }
@@ -112,7 +118,7 @@ function CreateProjectForm() {
 
             <div className="form-group row text-right mb-3">
                 <div className="col-12">
-                    <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Save</button>
+                    <button type="submit" disabled={false} className="btn btn-primary" onClick={handleSubmit}>Save</button>
                     <Link to="/projects"> <div className="btn btn-info" role="button">Close</div> </Link>
                 </div>
 
