@@ -10,7 +10,7 @@ export default class ProjectCard extends Component {
 
     handleRemove = () => {
         this.props.dispatch(removeProjectById(this.props.projectId));
-        Axios.delete(`http://localhost:8080/projects/${this.props.projectId}`)
+        Axios.delete(`http://localhost:8080/api/projects/${this.props.projectId}`)
     }
 
     render() {

@@ -49,9 +49,9 @@ function EditTaskForm() {
                 ...state
             };
 
-            Axios.post(`http://localhost:8080/projects/${params.id}/tasks/${params.taskid}`, payload).then(response => {
+            Axios.post(`http://localhost:8080/api/projects/${params.id}/tasks/${params.taskid}`, payload).then(response => {
                 if (response.status === 202) {
-                    Axios.get(`http://localhost:8080/projects/full/${params.id}`).then(response => {
+                    Axios.get(`http://localhost:8080/api/projects/full/${params.id}`).then(response => {
                         if (response.status === 200) {
                             dispatch(updateProject(parseInt(params.id), response.data));
                             history.goBack();

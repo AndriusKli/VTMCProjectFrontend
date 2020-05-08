@@ -37,9 +37,9 @@ function CreateProjectForm() {
                 "projectStatus": "NOT_STARTED"
             };
 
-            Axios.post(`http://localhost:8080/projects/`, payload).then(function(response) {
+            Axios.post(`http://localhost:8080/api/projects/`, payload).then(function(response) {
                 if (response.status === 202) {
-                    Axios.get(`http://localhost:8080/projects/retrieve/${state.projectName}`).then(res => {
+                    Axios.get(`http://localhost:8080/api/projects/retrieve/${state.projectName}`).then(res => {
                         const data = res.data;
 
                         dispatch(addProjects([{

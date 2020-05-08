@@ -21,7 +21,7 @@ export default class TaskCard extends Component {
 
     handleDelete = (event) => {
         event.preventDefault();
-        Axios.delete(`http://localhost:8080/projects/${this.props.projectId}/tasks/${this.props.id}`);
+        Axios.delete(`http://localhost:8080/api/projects/${this.props.projectId}/tasks/${this.props.id}`);
         this.props.dispatch(removeTaskById(this.props.projectId, this.props.id));
 
     }
