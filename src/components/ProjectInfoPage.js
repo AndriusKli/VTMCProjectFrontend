@@ -120,7 +120,7 @@ function ProjectInfoPage() {
                             <div className="row">
                                 <div className="col"> <b> Project ID: </b> {params.id} </div>
                                 <div className="col"> <b> Name: </b> {project.projectName} </div>
-                                <div className="col"> <b> Status: </b> {project.projectStatus}s</div>
+                                <div className="col"> <b> Status: </b> {project.projectStatus}</div>
                                 <div className="w-100"></div>
                                 <div className="col"> <b> Deadline: </b> {new Date(project.projectDeadline).toLocaleString('lt-LT')} </div>
                                 <div className="col"> <b> Project manager: </b> {project.projectManager}</div>

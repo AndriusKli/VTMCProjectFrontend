@@ -1,35 +1,54 @@
 import React from 'react'
 import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom'
 import Axios from 'axios';
+import FileSaver from 'file-saver';
 
 function MaintenancePage() {
 
     let history = useHistory();
 
     const handleReturn = (event) => {
+        event.preventDefault();
         history.goBack();
     }
 
-    const handleProjectRetrieval = (even) => {
-        // TODO
+    const handleProjectRetrieval = (event) => {
+        event.preventDefault();
+        Axios.get('http://localhost:8080/api/files/downloadProjectfile').then(response => {
+            if (response.status === 200) {
+                console.log(response.data)
+                let file = new File([response.data], "projects.csv", { type: "text/csv;charset=utf-8" });
+                FileSaver.saveAs(file);
+            } else {
+                alert("Something went wrong, try again.")
+            }
+        })
     }
 
-    const handleTaskRetrieval = (even) => {
-        // TODO
+    const handleTaskRetrieval = (event) => {
+        event.preventDefault();
+        Axios.get('http://localhost:8080/api/files/downloadTaskfile').then(response => {
+            if (response.status === 200) {
+                console.log(response.data)
+                let file = new File([response.data], "tasks.csv", { type: "text/csv;charset=utf-8" });
+                FileSaver.saveAs(file);
+            } else {
+                alert("Something went wrong, try again.")
+            }
+        })
     }
-    
-    const handleReset = (even) => {
+
+    const handleReset = (event) => {
         // TODO
     }
 
 
     return (
         <div>
-            <button className="btn">Export data</button>
-            <button className="btn">Import data</button>
+            <button onClick={handleProjectRetrieval} className="btn">Export projects</button>
+            <button onClick={handleTaskRetrieval} className="btn">Export tasks</button>
             <button className="btn">Reset data</button>
-            <Link to="/projects"><button className="btn3">Back</button></Link>
+            <button onClick={handleReturn} className="btn">Back</button>
         </div>
     )
 }

@@ -99,11 +99,11 @@ input[type="text"]:focus {
   /* border-style: solid;
   border-color: #3f0091; */
   border-radius: 0.7vw;
-  background-color: #cccccc;
+  /* background-color: #cccccc; */
 }
 
 li.a {
-  background-color: #ffffff;
+  background-color: #e0dddc;
   border-radius: 0.7vw;
 }
 li.a:hover {
