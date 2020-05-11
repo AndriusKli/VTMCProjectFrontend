@@ -1,5 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom'
 import Axios from 'axios';
 
 function MaintenancePage() {
@@ -24,7 +25,12 @@ function MaintenancePage() {
 
 
     return (
-        <div>Replace this with proper HTML</div>
+        <div>
+            <button className="btn">Export data</button>
+            <button className="btn">Import data</button>
+            <button className="btn">Reset data</button>
+            <Link to="/projects"><button className="btn3">Back</button></Link>
+        </div>
     )
 }
 
