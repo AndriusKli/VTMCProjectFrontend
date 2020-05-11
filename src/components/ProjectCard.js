@@ -17,9 +17,9 @@ export default class ProjectCard extends Component {
         return (
             <li className="a">
                 <div className="row pt-1 pl-3 pb-2 mt-1">
-                    <div className="col-7"> {this.props.projectName} </div>
-                    <span className="col-1"> <Link id="View" to={`/projects/${this.props.projectId}`}>View project </Link></span>
-                    <div className="col-1"> {this.props.status} </div>
+                    <div className="col-5"> {this.props.projectName} </div>
+                    <span className="col-2"> <Link id="View" to={`/projects/${this.props.projectId}`}>View project </Link></span>
+                    <div className="col-2"> {this.props.status} </div>
                     <div className="col-1"> {this.props.doneTasks}/{this.props.totalTasks} </div>
                     <div className="col-1"> <Link to={`/projects/${this.props.projectId}/edit`}> <FontAwesomeIcon icon={faPencilAlt} /> </Link> </div>
                     <span className="col-1" onClick={this.handleRemove}> <FontAwesomeIcon icon={faTrashAlt} /> </span>
