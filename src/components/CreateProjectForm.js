@@ -41,7 +41,6 @@ function CreateProjectForm() {
                 if (response.status === 202) {
                     Axios.get(`http://localhost:8080/api/projects/retrieve/${state.projectName}`).then(res => {
                         const data = res.data;
-
                         dispatch(addProjects([{
                                 ...data,
                                 "projectStatus": "Not started",
@@ -54,7 +53,6 @@ function CreateProjectForm() {
                      }); 
                 } else {
                     alert("Something went wrong, try again.")
-                    event.target.disabled = false;
                 } 
             });
             

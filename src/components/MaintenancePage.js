@@ -38,16 +38,16 @@ function MaintenancePage() {
         })
     }
 
-    const handleReset = (event) => {
-        // TODO
-    }
+    // const handleReset = (event) => {
+    //     // TODO
+    // }
 
 
     return (
         <div>
             <button onClick={handleProjectRetrieval} className="btn">Export projects</button>
             <button onClick={handleTaskRetrieval} className="btn">Export tasks</button>
-            <button className="btn">Reset data</button>
+            {/* <button className="btn">Reset data</button> */}
             <button onClick={handleReturn} className="btn">Back</button>
         </div>
     )

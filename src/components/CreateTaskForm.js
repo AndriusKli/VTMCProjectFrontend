@@ -56,12 +56,10 @@ function CreateTaskForm() {
                             history.push(`/projects/${params.id}`);
                         } else {
                             alert("Something went wrong, try again.");
-                            event.target.disabled = false;
                         }
                     });
                 } else {
                     alert("Something went wrong, try again.");
-                    event.target.disabled = false;
                 }
             });
 
