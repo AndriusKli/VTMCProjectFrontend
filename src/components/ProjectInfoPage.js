@@ -83,7 +83,7 @@ function ProjectInfoPage() {
                     <header className="text-center text-light my-4">
                         <nav className="navbar navbar-expand navbar-light">
                             <div className="collapse navbar-collapse" id="left">
-                                <ul className="navbar-nav mr-auto">
+                                <ul className="navbar-nav">
                                     <li className="nav-item active">
                                         <Link to="/"><div className="btn"><i className="fa fa-home"></i></div></Link>
                                     </li>
@@ -96,6 +96,13 @@ function ProjectInfoPage() {
                                                 onChange={handleSearchChange} />
                                         </form>
                                     </li>
+                                    <div className="row my-taskbar pl-2">
+                                        <div><span className="col" onClick={(event) => handleFilterChange(event, '')}>ALL</span></div>
+                                        <div><span className="col" onClick={(event) => handleFilterChange(event, "NOT_STARTED")}>NOT STARTED</span></div>
+                                        <div><span className="col" onClick={(event) => handleFilterChange(event, "IN_PROGRESS")}>IN PROGRESS</span></div>
+                                        <div><span className="col" onClick={(event) => handleFilterChange(event, "CANCELED")}>CANCELED</span></div>
+                                        <div><span className="col" onClick={(event) => handleFilterChange(event, "COMPLETE")}>COMPLETE</span></div>
+                                    </div>
                                 </ul>
                             </div>
 
@@ -112,6 +119,8 @@ function ProjectInfoPage() {
                                     </li>
                                 </ul>
                             </div>
+
+
                         </nav>
                     </header>
 
@@ -121,14 +130,14 @@ function ProjectInfoPage() {
                             <div className="col"> <b> Project name: </b> {project.projectName} </div>
                             <div className="col"> <b> Status: </b> {project.projectStatus}</div>
                         </div>
-                        <div class="w-100"></div>
+                        <div className="w-100"></div>
                         <div className="row">
                             <div className="col"> <b> Deadline: </b> {new Date(project.projectDeadline).toLocaleString('lt-LT')} </div>
                             <div className="col"> <b> Created on: </b> {new Date(project.projectCreatedOn).toLocaleString('lt-LT')} </div>
                             <div className="col"> <b> Modified on: </b> {new Date(project.projectModifiedOn).toLocaleString('lt-LT')} </div>
 
                         </div>
-                        <div class="w-100"></div>
+                        <div className="w-100"></div>
                         <div className="row">
                             <div className="col-4"> <b> Project manager: </b> {project.projectManager}</div>
                             <div className="col-8"> <b> Description: </b> {project.projectDescription} </div>
@@ -139,11 +148,11 @@ function ProjectInfoPage() {
                     <div className="my-taskbar">
                         <div className="container">
                             <div className="row">
-                                <div><span className="col" onClick={(event) => handleFilterChange(event, '')}>ALL</span></div>
+                                {/* <div><span className="col" onClick={(event) => handleFilterChange(event, '')}>ALL</span></div>
                                 <div><span className="col" onClick={(event) => handleFilterChange(event, "NOT_STARTED")}>NOT STARTED</span></div>
                                 <div><span className="col" onClick={(event) => handleFilterChange(event, "IN_PROGRESS")}>IN PROGRESS</span></div>
                                 <div><span className="col" onClick={(event) => handleFilterChange(event, "CANCELED")}>CANCELED</span></div>
-                                <div><span className="col" onClick={(event) => handleFilterChange(event, "COMPLETE")}>COMPLETE</span></div>
+                                <div><span className="col" onClick={(event) => handleFilterChange(event, "COMPLETE")}>COMPLETE</span></div> */}
                                 <Link to={`/projects/${params.id}/tasks/board`}><button className="col btn-primary">VIEW TASK BOARD</button></Link>
                                 <Link to={`/projects/${params.id}/tasks/create`}> <button className="col btn-primary ml-2">NEW TASK+</button> </Link>
                             </div>

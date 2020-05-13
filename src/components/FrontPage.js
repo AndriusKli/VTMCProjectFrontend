@@ -11,9 +11,9 @@ const ProjectPage = (props) => (
     <div className="container" id="pageHeader">
 
         <header className="text-center text-light my-4">
-            <nav className="navbar navbar-expand navbar-light">
+            <nav className="navbar navbar-expand ">
                 <div className="collapse navbar-collapse" id="left">
-                    <ul className="navbar-nav mr-auto">
+                    <ul className="navbar-nav">
                         <li className="nav-item active">
                             <Link to="/"><div className="btn" onClick={() => {
                                 props.dispatch(filterStatusBy(''));
@@ -34,6 +34,28 @@ const ProjectPage = (props) => (
                                     }} />
                             </form>
                         </li>
+                        <div className="my-taskbar">
+                            <div className="container">
+                                <div className="row">
+                                    <div><span className="col" onClick={(event) => {
+                                        event.preventDefault();
+                                        props.dispatch(filterStatusBy())
+                                    }}>ALL</span></div>
+                                    <div><span className="col" onClick={(event) => {
+                                        event.preventDefault();
+                                        props.dispatch(filterStatusBy("Not started"))
+                                    }} >NOT STARTED</span></div>
+                                    <div><span className="col" onClick={(event) => {
+                                        event.preventDefault();
+                                        props.dispatch(filterStatusBy("In progress"))
+                                    }}>IN PROGRESS</span></div>
+                                    <div><span className="col" onClick={(event) => {
+                                        event.preventDefault();
+                                        props.dispatch(filterStatusBy("Complete"))
+                                    }}>COMPLETE</span></div>
+                                </div>
+                            </div>
+                        </div>
                     </ul>
                 </div>
             </nav>
@@ -41,23 +63,7 @@ const ProjectPage = (props) => (
 
         <div className="my-taskbar">
             <div className="container">
-                <div className="row">
-                    <div><span className="col" onClick={(event) => {
-                        event.preventDefault();
-                        props.dispatch(filterStatusBy())
-                    }}>ALL</span></div>
-                    <div><span className="col" onClick={(event) => {
-                        event.preventDefault();
-                        props.dispatch(filterStatusBy("Not started"))
-                    }} >NOT STARTED</span></div>
-                    <div><span className="col" onClick={(event) => {
-                        event.preventDefault();
-                        props.dispatch(filterStatusBy("In progress"))
-                    }}>IN PROGRESS</span></div>
-                    <div><span className="col" onClick={(event) => {
-                        event.preventDefault();
-                        props.dispatch(filterStatusBy("Complete"))
-                    }}>COMPLETE</span></div>
+                <div className="row pb-2">
                     <Link to="/projects/new"><button className="btn-primary" onClick={() => {
                         props.dispatch(filterStatusBy(''));
                         props.dispatch(filterBySearch(''));

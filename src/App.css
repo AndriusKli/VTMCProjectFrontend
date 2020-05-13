@@ -39,6 +39,7 @@ body {
   margin-top: 22vw;
   margin-left: 3vw;
 }
+
 .btn2:hover {
   background-color: RoyalBlue;
   text-decoration: none;
@@ -113,6 +114,7 @@ h5 {
   background-color: #ffffff;
   color: #000000;
 }
+
 .card-body {
   background-color: #ffffff;
   color: #000000;
@@ -121,6 +123,7 @@ h5 {
 .todos li {
   background: #3f0091;
 }
+
 .delete {
   cursor: pointer;
 }
@@ -253,4 +256,9 @@ li.a:hover {
   background-color: #5800cc;
   border-color: #5800cc;
   border-radius: 5px;
+}
+
+.my-taskbar {
+  padding-top: 1%;
+  color: black;
 }
