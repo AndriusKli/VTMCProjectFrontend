@@ -115,26 +115,25 @@ function ProjectInfoPage() {
                         </nav>
                     </header>
 
-                    <div className="my-projectcontainer">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col"> <b> Project ID: </b> {params.id} </div>
-                                <div className="col"> <b> Name: </b> {project.projectName} </div>
-                                <div className="col"> <b> Status: </b> {project.projectStatus}</div>
-                                <div className="w-100"></div>
-                                <div className="col"> <b> Deadline: </b> {new Date(project.projectDeadline).toLocaleString('lt-LT')} </div>
-                                <div className="col"> <b> Project manager: </b> {project.projectManager}</div>
-                                <div className="col"> <b> Modified on: </b> {new Date(project.projectModifiedOn).toLocaleString('lt-LT')} </div>
-                                <div className="w-100"></div>
-                                <div className="col"> <b> Create date: </b> {new Date(project.projectCreatedOn).toLocaleString('lt-LT')} </div>
+                    <div className="container-fluid">
+                        <div className="row">
+                            <div className="col"> <b> Project ID: </b> {params.id} </div>
+                            <div className="col"> <b> Project name: </b> {project.projectName} </div>
+                            <div className="col"> <b> Status: </b> {project.projectStatus}</div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div className="row">
+                            <div className="col"> <b> Deadline: </b> {new Date(project.projectDeadline).toLocaleString('lt-LT')} </div>
+                            <div className="col"> <b> Created on: </b> {new Date(project.projectCreatedOn).toLocaleString('lt-LT')} </div>
+                            <div className="col"> <b> Modified on: </b> {new Date(project.projectModifiedOn).toLocaleString('lt-LT')} </div>
 
-                            </div>
                         </div>
-                        <div className="container my-description">
-                            <div className="row">
-                                <div className="col-12"> <b> Description: </b> {project.projectDescription} </div>
-                            </div>
+                        <div class="w-100"></div>
+                        <div className="row">
+                            <div className="col-4"> <b> Project manager: </b> {project.projectManager}</div>
+                            <div className="col-8"> <b> Description: </b> {project.projectDescription} </div>
                         </div>
+                        <br />
                     </div>
 
                     <div className="my-taskbar">
@@ -145,17 +144,18 @@ function ProjectInfoPage() {
                                 <div><span className="col" onClick={(event) => handleFilterChange(event, "IN_PROGRESS")}>IN PROGRESS</span></div>
                                 <div><span className="col" onClick={(event) => handleFilterChange(event, "CANCELED")}>CANCELED</span></div>
                                 <div><span className="col" onClick={(event) => handleFilterChange(event, "COMPLETE")}>COMPLETE</span></div>
-                                <Link to={`/projects/${params.id}/tasks/create`}> <div><span className="col">NEW TASK+</span></div> </Link>
+                                <Link to={`/projects/${params.id}/tasks/board`}><button className="col btn-primary">VIEW TASK BOARD</button></Link>
+                                <Link to={`/projects/${params.id}/tasks/create`}> <button className="col btn-primary ml-2">NEW TASK+</button> </Link>
                             </div>
                         </div>
                     </div>
 
-                    <div className="my-table container-fluid">
+                    <div className="container-fluid">
                         <table className="table">
                             <thead>
                                 <tr className="row">
                                     <th className="col-1"> ID </th>
-                                    <th className="col-3 "> NAME </th>
+                                    <th className="col-3 "> PROJECT NAME </th>
                                     <th className="col-1 text-center"> INFO </th>
                                     <th className="col-1 text-center"> PRIORITY </th>
                                     <th className="col-1 text-center"> STATUS </th>

@@ -9,23 +9,24 @@ import { Link } from "react-router-dom";
 export default class ProjectCard extends Component {
 
     handleRemove = () => {
-        this.props.dispatch(removeProjectById(this.props.projectId));
-        Axios.delete(`http://localhost:8080/api/projects/${this.props.projectId}`)
+        if (window.confirm("Are you sure you want to delete this project?")) {
+            this.props.dispatch(removeProjectById(this.props.projectId));
+            Axios.delete(`http://localhost:8080/api/projects/${this.props.projectId}`)
+        }
     }
 
     render() {
         return (
-            <li className="a">
-                <div className="row pt-1 pl-3 pb-2 mt-1">
-                    <div className="col-5"> {this.props.projectName} </div>
-                    <span className="col-2"> <Link id="View" to={`/projects/${this.props.projectId}`}>View project </Link></span>
-                    <div className="col-2"> {this.props.status} </div>
-                    <div className="col-1"> {this.props.doneTasks}/{this.props.totalTasks} </div>
-                    <div className="col-1"> <Link to={`/projects/${this.props.projectId}/edit`}> <FontAwesomeIcon icon={faPencilAlt} /> </Link> </div>
-                    <span className="col-1" onClick={this.handleRemove}> <FontAwesomeIcon icon={faTrashAlt} /> </span>
-
-                </div>
-            </li>
+            <tbody>
+                <tr className="row">
+                    <td className="col-5"> {this.props.projectName} </td>
+                    <td className="col-2 text-center"><Link id="View" to={`/projects/${this.props.projectId}`}>View project </Link></td>
+                    <td className="col-2 text-center"> {this.props.status} </td>
+                    <td className="col-1 text-center">{this.props.doneTasks}/{this.props.totalTasks} </td>
+                    <td className="col-1 text-center"> <Link to={`/projects/${this.props.projectId}/edit`}><FontAwesomeIcon icon={faPencilAlt} /></Link></td>
+                    <td className="col-1 text-center"  onClick={this.handleRemove}> <span><FontAwesomeIcon icon={faTrashAlt} /> </span></td>
+                </tr>
+            </tbody>
         )
     }
 }

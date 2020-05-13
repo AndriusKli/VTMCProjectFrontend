@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import MainProjectPage from './components/MainProjectPage';
+import FrontPage from './components/FrontPage';
 import { Switch, Route } from "react-router-dom";
 import Homepage from './components/Homepage';
 import { addProjects } from './actions/projects';
@@ -13,6 +13,7 @@ import EditProjectForm from './components/EditProjectForm';
 import EditTaskForm from './components/EditTaskForm';
 import NotFoundPage from './components/NotFoundPage';
 import MaintenancePage from './components/MaintenancePage';
+import TaskboardPage from './components/TaskboardPage';
 
 export default class App extends React.Component {
 
@@ -45,11 +46,15 @@ export default class App extends React.Component {
             </Route>
 
             <Route path="/projects" exact={true}>
-              <MainProjectPage />
+              <FrontPage />
             </Route>
 
             <Route path="/projects/new" exact={true}>
               <PageTemplate content={<CreateProjectForm />} />
+            </Route>
+
+            <Route path="/projects/:id/tasks/board" exact={true}>
+              <PageTemplate content={<TaskboardPage />} />
             </Route>
 
             <Route path="/projects/:id" exact={true} component={ProjectInfoPage} />
