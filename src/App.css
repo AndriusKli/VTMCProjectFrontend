@@ -3,6 +3,21 @@ body {
   background: rgba(63, 0, 145, 1);
 }
 
+.clr-dwntaskcsv {
+  color: rgb(255, 255, 255) ;
+  background-color: #860087;
+}
+
+.clr-dwnprojectcsv {
+  color: rgb(255, 255, 255) ;
+  background-color: #860087;
+}
+
+.clr-backgr {
+  color: rgb(102, 102, 102);
+  background-color: #817d81;
+}
+
 /* index.html */
 
 .container1 {
