@@ -54,7 +54,7 @@ export default class App extends React.Component {
             </Route>
 
             <Route path="/projects/:id/tasks/board" exact={true}>
-              <PageTemplate content={<TaskboardPage />} />
+              <TaskboardPage />
             </Route>
 
             <Route path="/projects/:id" exact={true} component={ProjectInfoPage} />

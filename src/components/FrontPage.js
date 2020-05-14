@@ -63,7 +63,7 @@ const ProjectPage = (props) => (
 
         <div className="my-taskbar">
             <div className="container">
-                <div className="row pb-2">
+                <div className="row pb-1">
                     <Link to="/projects/new"><button className="btn-primary" onClick={() => {
                         props.dispatch(filterStatusBy(''));
                         props.dispatch(filterBySearch(''));

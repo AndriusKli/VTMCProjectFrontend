@@ -277,3 +277,36 @@ li.a:hover {
   padding-top: 1%;
   color: black;
 }
+
+/* task board table header colors */
+.clr-notstarted {
+  color: rgb(255, 255, 255) ;
+  background-color: #e03531;
+}
+
+.clr-complete {
+  color: rgb(255, 255, 255) ;
+  background-color: #51b364;
+}
+
+.clr-progress {
+  color: rgb(255, 255, 255) ;
+  background-color: #f0bd27;
+}
+
+#upBtn {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 14px;
+  z-index: 99; 
+  font-size: 14px;
+  border: none;
+  outline: none;
+  background-color: rgb(255, 255, 255);
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 15px;
+  opacity: 1;
+  transition: 0.5s;
+}
