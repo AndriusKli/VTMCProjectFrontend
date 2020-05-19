@@ -21,8 +21,7 @@ function TaskboardPage() {
     }
 
     function topFunction() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
+        window.scrollTo(0, 0);
     }
 
     function scrollFunction() {
@@ -36,6 +35,10 @@ function TaskboardPage() {
     
     useEffect(() => {
         window.addEventListener('scroll', scrollFunction);
+
+        return function cleanup() {
+            window.removeEventListener('scroll', scrollFunction);
+        }
     },[])
 
     return (
