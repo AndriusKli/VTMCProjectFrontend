@@ -1,22 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import Axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateProject } from '../actions/projects'
 
-function CreateTaskForm() {
+function TaskEditAndCreateForm() {
 
     let dispatch = useDispatch();
     let params = useParams();
     let history = useHistory();
+    const task = useSelector(state => state.projects.find(({ projectId }) => projectId === parseInt(params.id)).tasks.find(({ taskId }) => taskId === parseInt(params.taskid)));
+
 
     const [state, setState] = useState({
-        taskName: '',
-        taskDescription: '',
-        taskPriority: "LOW",
-        taskStatus: "NOT_STARTED",
-        taskDeadline: '',
-        taskStory: ''
+        taskName: task ? task.taskName : '',
+        taskDescription: task ? task.taskDescription : '',
+        taskPriority: task ? task.taskPriority : 'LOW',
+        taskStatus: task ? task.taskStatus : 'NOT_STARTED',
+        taskDeadline: task ? new Date(task.taskDeadline).toLocaleDateString('lt-LT') : new Date(Date.now()).toLocaleDateString('lt-LT'),
+        taskStory: task ? task.taskStory : ''
     });
 
     function validateFields() {
@@ -26,7 +28,6 @@ function CreateTaskForm() {
         const termValid = (taskDeadline !== '' && Date.parse(taskDeadline) >= Date.now());
         const storyValid = (taskStory !== '' && taskStory.length < 500);
 
-
         return nameValid && descriptionValid && termValid && storyValid;
     }
 
@@ -35,7 +36,7 @@ function CreateTaskForm() {
         const { name, value } = event.target;
         setState({
             ...state,
-            [name]: value.trim()
+            [name]: value
         });
     }
 
@@ -48,34 +49,53 @@ function CreateTaskForm() {
                 ...state
             };
 
-            Axios.post(`http://localhost:8080/api/projects/${params.id}/tasks`, payload).then(response => {
-                if (response.status === 202) {
-                    Axios.get(`http://localhost:8080/api/projects/full/${params.id}`).then(response => {
-                        if (response.status === 200) {
-                            dispatch(updateProject(parseInt(params.id), response.data));
-                            history.push(`/projects/${params.id}`);
-                        } else {
-                            alert("Something went wrong, try again.");
-                        }
-                    });
-                } else {
-                    alert("Something went wrong, try again.");
-                }
-            });
+            task ?
+
+                Axios.post(`http://localhost:8080/api/projects/${params.id}/tasks/${params.taskid}`, payload).then(response => {
+                    if (response.status === 202) {
+                        Axios.get(`http://localhost:8080/api/projects/full/${params.id}`).then(response => {
+                            if (response.status === 200) {
+                                dispatch(updateProject(parseInt(params.id), response.data));
+                                history.goBack();
+                            } else {
+                                alert("Something went wrong, please try again.")
+                                event.target.disabled = false;
+                            }
+                        });
+                    } else {
+                        alert("Something went wrong, please try again.")
+                        event.target.disabled = false;
+                    }
+                })
+
+                :
+
+                Axios.post(`http://localhost:8080/api/projects/${params.id}/tasks`, payload).then(response => {
+                    if (response.status === 202) {
+                        Axios.get(`http://localhost:8080/api/projects/full/${params.id}`).then(response => {
+                            if (response.status === 200) {
+                                dispatch(updateProject(parseInt(params.id), response.data));
+                                history.push(`/projects/${params.id}`);
+                            } else {
+                                alert("Something went wrong, try again.");
+                            }
+                        });
+                    } else {
+                        alert("Something went wrong, try again.");
+                    }
+                });
 
         } else {
             alert("There are errors in your form, please try again.");
             event.target.disabled = false;
         }
-
     }
 
-
     // For debugging
-    // useEffect(() => {
-    //     console.log(state);
-    //     console.log(validateFields());
-    // })
+    useEffect(() => {
+        console.log(state);
+        console.log(validateFields());
+    })
 
     return (
         <form className="container col-md-6" id="pageform">
@@ -87,14 +107,14 @@ function CreateTaskForm() {
             <div className="form-group row">
                 <label className="col-sm-2 col-form-label">Name</label>
                 <div className="col-sm-10">
-                    <input onChange={handleUpdate} type="name" className="form-control" name="taskName" />
+                    <input onChange={handleUpdate} value={state.taskName} type="name" className="form-control" name="taskName" />
                 </div>
             </div>
 
             <div className="form row">
                 <label className="col-sm-2 col-form-label">Description</label>
                 <div className="col-sm-10">
-                    <textarea onChange={handleUpdate} className="form-control" name="taskDescription" style={{ resize: "none" }} rows="3"></textarea>
+                    <textarea onChange={handleUpdate} value={state.taskDescription} className="form-control" name="taskDescription" style={{ resize: "none" }} rows="3"></textarea>
                 </div>
             </div>
             <br />
@@ -102,7 +122,7 @@ function CreateTaskForm() {
             <div className="form-group row">
                 <label className="col-sm-2 col-form-label">Priority</label>
                 <div className="col-sm-10">
-                    <select onChange={handleUpdate} name="taskPriority">
+                    <select onChange={handleUpdate} value={state.taskPriority} name="taskPriority">
                         <option value="LOW">Low</option>
                         <option value="MEDIUM">Medium</option>
                         <option value="HIGH">High</option>
@@ -113,10 +133,11 @@ function CreateTaskForm() {
             <div className="form-group row">
                 <label className="col-sm-2 col-form-label">Status</label>
                 <div className="col-sm-10">
-                    <select onChange={handleUpdate} name="taskStatus">
+                    <select onChange={handleUpdate} value={state.taskStatus} name="taskStatus">
                         <option value="NOT_STARTED">Not started</option>
                         <option value="IN_PROGRESS">In progress</option>
                         <option value="COMPLETE">Complete</option>
+                        <option value="CANCELED">Canceled</option>
                     </select>
                 </div>
             </div>
@@ -124,14 +145,14 @@ function CreateTaskForm() {
             <div className="form-group row">
                 <label className="col-sm-2 col-form-label">Deadline</label>
                 <div className="col-sm-10">
-                    <input onChange={handleUpdate} type="date" className="form-control" name="taskDeadline" />
+                    <input onChange={handleUpdate} value={state.taskDeadline} type="date" className="form-control" name="taskDeadline" />
                 </div>
             </div>
 
             <div className="form row">
                 <label className="col-sm-2 col-form-label">User story</label>
                 <div className="col-sm-10">
-                    <textarea onChange={handleUpdate} className="form-control" name="taskStory" rows="5" style={{ resize: "none" }}></textarea>
+                    <textarea onChange={handleUpdate} value={state.taskStory} className="form-control" name="taskStory" rows="5" style={{ resize: "none" }}></textarea>
                 </div>
             </div>
             <br />
@@ -148,4 +169,4 @@ function CreateTaskForm() {
     )
 }
 
-export default CreateTaskForm;
+export default TaskEditAndCreateForm;
